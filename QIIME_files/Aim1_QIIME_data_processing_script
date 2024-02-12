@@ -1,0 +1,45 @@
+#Research Project
+
+#!/bin/bash
+
+#Create a directory for project and navigate to it
+mkdir /data/anemia
+cd /data/anemia
+
+#Importing + Demultiplexing Data while working directory is '/data/anemia'
+
+qiime tools import \
+  --type "SampleData[SequencesWithQuality]" \
+  --input-format SingleEndFastqManifestPhred33V2 \
+  --input-path /mnt/datasets/project_2/anemia/anemia_manifest_updated.txt \
+  --output-path ./demux_seqs.qza
+
+#Visualize Data
+  # Create visualization of demultiplexed samples
+qiime demux summarize \
+  --i-data demux_seqs.qza \
+  --o-visualization demux.qzv
+
+# Determine ASVs with DADA2
+qiime dada2 denoise-single \
+  --i-demultiplexed-seqs demux_seqs.qza \
+  --p-trim-left 0 \
+  --p-trunc-len 303 \
+  --o-representative-sequences rep-seqs.qza \
+  --o-table table.qza \
+  --o-denoising-stats stats.qza
+  
+# Visualize DADA2 stats
+qiime metadata tabulate \
+  --m-input-file stats.qza \
+  --o-visualization stats.qzv
+
+# Visualize ASVs stats
+qiime feature-table summarize \
+  --i-table table.qza \
+  --o-visualization table.qzv \
+  --m-sample-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt
+  
+qiime feature-table tabulate-seqs \
+  --i-data rep-seqs.qza \
+  --o-visualization rep-seqs.qzv
