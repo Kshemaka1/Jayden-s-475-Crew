@@ -24,7 +24,7 @@ qiime demux summarize \
 qiime dada2 denoise-single \
   --i-demultiplexed-seqs demux_seqs.qza \
   --p-trim-left 0 \
-  --p-trunc-len 303 \
+  --p-trunc-len 253 \
   --o-representative-sequences rep-seqs.qza \
   --o-table table.qza \
   --o-denoising-stats stats.qza
