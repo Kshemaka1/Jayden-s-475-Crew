@@ -24,3 +24,32 @@ This project explores the complex effects of anemia on systemic metabolism and m
 ### February 14 2024 at 2:15 pm PST
 
 ## Lab Notebook
+## Dataset Path
+
+- **Path to dataset**: `/mnt/datasets/project_2/anemia`
+- **Data storage location**: `/data/anemia`
+- **Note**: All work should be saved in the `data` folder.
+
+## Work Done
+
+### Sequence Import and Demultiplexing
+
+- **Task**: Imported and demultiplexed raw sequences.
+- **Manifest file**: `anemia_manifest_updated.txt`
+- **Output**: Generated a visualization file `demux.qzv` located in `/data/anemia`.
+
+### ASV Generation (Attempt 1)
+
+- **Parameters**: Truncation length set to 303 nucleotides.
+- **Result**: Yielded 10 ASVs and 12 samples.
+- **Action**: Moved all related files to `/data/anemia/trunc-len_303`.
+
+### ASV Generation (Attempt 2)
+
+- **Parameters**: Truncation length set to 253 nucleotides.
+- **Result**: Successfully generated 1434 ASVs and 193 samples.
+- **Storage**: All related files stored in `/data/anemia`.
+
+## Taxonomy Analysis
+
+- **Note**: Analysis in progress. Details will be updated upon completion.
