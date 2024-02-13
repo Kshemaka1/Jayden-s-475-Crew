@@ -1,10 +1,11 @@
 # MICB 475 Team 12: Lab Notebook and Meeting Agenda
 This repository stores all the scripts and documentation related to our team's project!
 
+## The All-Star Team
+<img src="/team-pic.png" alt="The Team Behind the Magic" width="400" height="400">
+
 ## Summary
 This project explores the complex effects of anemia on systemic metabolism and microbial functions, using four main metabolic indicators: Body Iron Storage, Ferritin, Retinol Binding Protein (RBP), and C Reactive Protein (CRP). These indicators provide insights into iron metabolism, vitamin A transport, protein synthesis, and metabolic syndrome.
-
-![The Team Behind the Magic](https://drive.google.com/uc?export=view&id=1vFPIBSaEc7tA03fvuFjNn4yOGl4LP9rw)
 
 
 # Table of Contents
