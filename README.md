@@ -28,6 +28,7 @@ This project explores the complex effects of anemia on systemic metabolism and m
 ### February 14 2024 at 2:15 pm PST
 - Provide update of work done so far --> AIM 1: Microbiome Data Processing complete
 - Go over relevant questons related to Aim 1 (e.g. training classifiers)
+- Clarify research question for project and workflow/aims 
 - Next steps: Work towards AIM 2: Diversity Analysis
 
 
