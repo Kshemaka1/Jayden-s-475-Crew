@@ -1,7 +1,7 @@
 # MICB 475 Team 12: Lab Notebook and Meeting Agenda
 This repository stores all the scripts and documentation related to our team's project!
 
-## The All-Star Team
+## [The All-Star Team](https://t.ly/wiPSh)
 <img src="/team-pic.png" alt="The Team Behind the Magic" width="400" height="400">
 
 ## Summary
