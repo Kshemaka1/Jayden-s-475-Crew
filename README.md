@@ -53,7 +53,7 @@ To import and demultiplex the 16S rRNA sequences from the Anemia Dataset using Q
   - Path in server: `/data/anemia/demux_seqs.qza`
 - Demultiplexed `.qzv` file: `demux.qzv`
   - Path in server: `/data/anemia/demux.qzv`
-  - Qzv file also stored in repository.
+  - Qzv file also stored in [repository](QIIME_files/demux.qzv)
 
 ### Results
 
