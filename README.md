@@ -1,8 +1,12 @@
 # MICB 475 Team 12: Lab Notebook and Meeting Agenda
 This repository stores all the scripts and documentation related to our team's project!
 
+## The All-Star Team
+<img src="/team-pic.png" alt="The Team Behind the Magic" width="400" height="400">
+
 ## Summary
 This project explores the complex effects of anemia on systemic metabolism and microbial functions, using four main metabolic indicators: Body Iron Storage, Ferritin, Retinol Binding Protein (RBP), and C Reactive Protein (CRP). These indicators provide insights into iron metabolism, vitamin A transport, protein synthesis, and metabolic syndrome.
+
 
 # Table of Contents
 
@@ -22,6 +26,11 @@ This project explores the complex effects of anemia on systemic metabolism and m
 ## Agenda
 
 ### February 14 2024 at 2:15 pm PST
+- Provide update of work done so far --> AIM 1: Microbiome Data Processing complete
+- Go over relevant questons related to Aim 1 (e.g. training classifiers)
+- Clarify research question for project and workflow/aims 
+- Next steps: Work towards AIM 2: Diversity Analysis
+
 
 ## Lab Notebook
 ## Dataset Path
