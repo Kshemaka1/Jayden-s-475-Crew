@@ -57,7 +57,54 @@ qiime feature-classifier classify-sklearn \
 # Taxonomy barplots
 qiime taxa barplot \
   --i-table table.qza \
-  --i-taxonomy taxonomy.qza \
+  --i-taxonomy taxonomy.qza 
   --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
   --o-visualization taxa-bar-plots.qzv
   
+# Taxonomy-based filtering (removing mitochondria and chloroplast)
+qiime taxa filter-table \
+  --i-table table.qza \
+  --i-taxonomy taxonomy_truncated/taxonomy_truncated.qza \
+  --p-exclude mitochondria,chloroplast \
+  --o-filtered-table table-no-mitochondria-no-chloroplast.qza
+
+qiime feature-table summarize \
+  --i-table table-no-mitochondria-no-chloroplast.qza \
+  --o-visualization table-no-mitochondria-no-chloroplast.qzv \
+  --m-sample-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt
+
+# Generate a tree for phylogenetic diversity analyses
+qiime phylogeny align-to-tree-mafft-fasttree \
+  --i-sequences rep-seqs.qza \
+  --o-alignment aligned-rep-seqs.qza \
+  --o-masked-alignment masked-aligned-rep-seqs.qza \
+  --o-tree unrooted-tree.qza \
+  --o-rooted-tree rooted-tree.qza 
+
+# Alpha-rarefaction
+qiime diversity alpha-rarefaction \
+  --i-table table.qza \
+  --i-phylogeny rooted-tree.qza \
+  --p-max-depth 50000 \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --o-visualization alpha-rarefaction.qzv
+
+# Calculate alpha- and beta-diversity metrics
+qiime diversity core-metrics-phylogenetic \
+  --i-phylogeny rooted-tree.qza \
+  --i-table table-no-mitochondria-no-chloroplast.qza \
+  --p-sampling-depth 10000 \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --output-dir core-metrics-results
+
+# Calculate alpha-group-significance
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity core-metrics-results/faith_pd_vector.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --o-visualization core-metrics-results/faith-pd-group-significance.qzv
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity core-metrics-results/evenness_vector.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --o-visualization core-metrics-results/evenness-group-significance.qzv
+
