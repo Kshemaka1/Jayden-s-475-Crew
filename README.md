@@ -41,7 +41,7 @@ This project explores the complex effects of anemia on systemic metabolism and m
 
 ### Purpose
 
-To import and demultiplex the 16S rRNA sequences from the Anemia Dataset using QIIME2.
+To import and demultiplex the 16S rRNA sequences from the [Anemia Dataset](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6290362/) using QIIME2.
 
 ### Procedure
 
