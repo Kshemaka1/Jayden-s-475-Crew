@@ -13,6 +13,8 @@ This project explores the complex effects of anemia on systemic metabolism and m
 1. [Project Aims](#Project-Aims)
 2. [Agenda](#Agenda)
 3. [Lab Notebook](#Lab-Notebook)
+   - [P001: Importing and Demultiplexing the Anemia Dataset](#P001:-Importing-and-Demultiplexing-the-Anemia-Dataset)
+   - [P002: Generating ASVs](#P002-Generating-ASVs)
 
 
 
