@@ -34,8 +34,8 @@ This project explores the complex effects of anemia on systemic metabolism and m
 
 # Lab Notebook
 
-## Importing and Demultiplexing the Anemia Dataset
-**Date:** Feb 9th, 2023
+## P001: Importing and Demultiplexing the Anemia Dataset
+**Date:** Feb 9th, 2024
 
 ### Purpose
 
@@ -66,17 +66,35 @@ To import and demultiplex the 16S rRNA sequences from the Anemia Dataset using Q
 ### Sequence Length Statistics
 ![Sequence Length Distribution](QIIME_files/QIIME_view_images/Demultiplexed_sequence_length_summary.png)
 
-## ASV Generation (Attempt 1)
+## P002: Generating ASVs 
+**Date**: February 11, 2024
 
-- **Parameters**: Truncation length set to 303 nucleotides.
-- **Result**: Yielded 10 ASVs and 12 samples.
-- **Action**: Moved all related files to `/data/anemia/trunc-len_303`.
+### Purpose
+To denoise the demux file and group the sequences into amplicon sequence variants (ASVs).
 
-## ASV Generation (Attempt 2)
+### Procedure
+Used the quality score graph visualized using the `demux.qzv` file (generated in P001) to determine an appropriate truncation length for denoising + ASV clustering:
+![Quality Score Graph](QIIME_files/QIIME_view_images/Demultiplexed_sequences_quality_score.png)
 
-- **Parameters**: Truncation length set to 253 nucleotides.
-- **Result**: Successfully generated 1434 ASVs and 193 samples.
-- **Storage**: All related files stored in `/data/anemia`.
+#### ASV Generation (Attempt 1)
+We first set the truncation length to 303 nucleotides, as the reads at this length appeared to have a high quality score. However, this resulted in only 10 ASVs and 12 samples. ![image of frequency/feature detail](QIIME_files/QIIME_view_images/trunc_Length-303_Frequency_per_feature_detail.png)
+
+#### ASV Generation (Attempt 2)
+As a result, we reattempted the denoising using a truncation length of 253 nucleotides since this was the length of ~98% of reads.
+
+**Result**: Successfully generated 1434 ASVs and 193 samples.
+![image of ASV Stats](QIIME_files/QIIME_view_images/trunc_Length-253_ASV_stats.png)
+![image of frequency/feature detail](QIIME_files/QIIME_view_images/trunc_Length-253_Frequency_per_feature_detail.png)
+
+### Storage 
+#### ASV Generation (Attempt 1: Truncation Length of 303 nt)
+- On server, located in `/data/anemia/trunc-len_303`.
+- On the repository, the `rep-seqs.qzv` and `table.qzv` files are located in: `QIIME_files/Trunc-length_303`
+
+#### ASV Generation (Attempt 2: Truncation Length of 253 nt)
+- On the server, the following files were generated: `rep-seqs.qza`, `rep-seqs.qzv`, `stats.qza`, `stats.qzv`, `table.qza`, `table.qzv` - all stored in `/data/anemia/`.
+- On the repository, the `rep-seqs.qzv` and `table.qzv` files are located in: `QIIME_files/Trunc-length_253`
+
 
 ## Taxonomy Analysis
 
