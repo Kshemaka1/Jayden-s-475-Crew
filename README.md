@@ -64,7 +64,7 @@ To import and demultiplex the 16S rRNA sequences from the Anemia Dataset using Q
 - The minimum sequence length identified during subsampling was 210 bases.
 
 ### Sequence Length Statistics
-![Sequence Length Distribution](QIIME_files/QIIME_view_images)
+![Sequence Length Distribution](QIIME_files/QIIME_view_images/Demultiplexed_sequence_length_summary.png)
 
 ## ASV Generation (Attempt 1)
 
