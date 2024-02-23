@@ -16,14 +16,14 @@ This project explores the complex effects of anemia on systemic metabolism and m
 
 
 
-## Project Aims
+# Project Aims
 - Aim 1: Microbiome Data Processing: Use Qiime2 for initial microbiome data processing to set the stage for detailed analysis.
 - Aim 2: Diversity Analysis: Examine microbial diversity using Qiime or R to identify significant differences related to anemia.
 - Aim 3: Targeted Analysis: Focus on interesting findings from the diversity analysis for deeper investigation, potentially expanding to differential abundance analysis.
 - Aim 4: Metabolic Pathway Analysis: Use PICRUSt2 for functional analysis to identify metabolic pathways affected by anemia, using server-based and R analyses.
 - Aim 5: Development of Predictive Models: Use identified metabolic markers to develop models predicting anemia
 
-## Agenda
+# Agenda
 
 ### February 14 2024 at 2:15 pm PST
 - Provide update of work done so far --> AIM 1: Microbiome Data Processing complete
@@ -32,28 +32,47 @@ This project explores the complex effects of anemia on systemic metabolism and m
 - Next steps: Work towards AIM 2: Diversity Analysis
 
 
-## Lab Notebook
-## Dataset Path
+# Lab Notebook
 
-- **Path to dataset**: `/mnt/datasets/project_2/anemia`
-- **Data storage location**: `/data/anemia`
-- **Note**: All work should be saved in the `data` folder.
+## Importing and Demultiplexing the Anemia Dataset
+**Date:** Feb 9th, 2023
 
-## Work Done
+### Purpose
 
-### Sequence Import and Demultiplexing
+To import and demultiplex the 16S rRNA sequences from the Anemia Dataset using QIIME2.
 
-- **Task**: Imported and demultiplexed raw sequences.
-- **Manifest file**: `anemia_manifest_updated.txt`
-- **Output**: Generated a visualization file `demux.qzv` located in `/data/anemia`.
+### Procedure
 
-### ASV Generation (Attempt 1)
+- Created a dedicated directory for all related analyses related to the dataset: `/data/anemia`.
+- Used manifest file (`/mnt/datasets/project_2/anemia/anemia_manifest_updated.txt`) to import and demultiplex dataset.
+- Generated a visualization file `demux.qzv`, moved to local computer, and viewed using [QIIME2 View](https://view.qiime2.org/).
+
+### Output Files
+
+- Demultiplexed `.qza` file: `demux_seqs.qza`
+  - Path in server: `/data/anemia/demux_seqs.qza`
+- Demultiplexed `.qzv` file: `demux.qzv`
+  - Path in server: `/data/anemia/demux.qzv`
+  - Qzv file also stored in [repository](QIIME_files/demux.qzv)
+
+### Results
+
+- Total number of reads: 6,017,157
+- Total number of samples: 193
+- Range of sequencing depth: 67-74,453
+- Maximum read length (bp): 253
+- The minimum sequence length identified during subsampling was 210 bases.
+
+### Sequence Length Statistics
+![Sequence Length Distribution](QIIME_files/QIIME_view_images/Demultiplexed_sequence_length_summary.png)
+
+## ASV Generation (Attempt 1)
 
 - **Parameters**: Truncation length set to 303 nucleotides.
 - **Result**: Yielded 10 ASVs and 12 samples.
 - **Action**: Moved all related files to `/data/anemia/trunc-len_303`.
 
-### ASV Generation (Attempt 2)
+## ASV Generation (Attempt 2)
 
 - **Parameters**: Truncation length set to 253 nucleotides.
 - **Result**: Successfully generated 1434 ASVs and 193 samples.
