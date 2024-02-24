@@ -108,3 +108,47 @@ qiime diversity alpha-group-significance \
   --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
   --o-visualization core-metrics-results/evenness-group-significance.qzv
 
+#### Feb 23 - KG ####
+# Calculate beta-group-significance, focusing on anemia category
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column anemia \
+  --o-visualization core-metrics-results/unweighted-unifrac-anemia-significance.qzv \
+  --p-pairwise
+
+# Calculate beta-group-significance, focusing on adjusted Body Iron Storage Status
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column adj_bis_status \
+  --o-visualization core-metrics-results/unweighted-unifrac-adj_bis_status-group-significance.qzv \
+  --p-pairwise
+
+# Calculate beta-group-significance, focusing on adjusted Ferritin status.
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column adj_ferritin_status \
+  --o-visualization core-metrics-results/unweighted-unifrac-adj_ferritin_status-group-significance.qzv \
+  --p-pairwise
+
+# Calculate beta-group-significance, focusing on adjusted Retinol Binding Protein (RBP) status.
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column adj_rbp_status \
+  --o-visualization core-metrics-results/unweighted-unifrac-adj_rbp_status-group-significance.qzv \
+  --p-pairwise
+
+# Calculate beta-group-significance, focusing on C Reactive Protein (CRP) status.
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column crp_status \
+  --o-visualization core-metrics-results/unweighted-unifrac-crp_status-group-significance.qzv \
+  --p-pairwise
