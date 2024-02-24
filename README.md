@@ -7,6 +7,8 @@ This repository stores all the scripts and documentation related to our team's p
 ## Summary
 This project explores the complex effects of anemia on systemic metabolism and microbial functions, using four main metabolic indicators: **Adjusted Body Iron Storage (BIS) Status** (`adj_bis_status`), **Adjusted Ferritin Status** (`adj_ferritin_status`), **Adjusted Retinol Binding Protein (RBP) Status** (`adj_rbp_status`), and **C Reactive Protein (CRP) Status** (`crp_status`). These indicators provide insights into iron metabolism, vitamin A transport, protein synthesis, and metabolic syndrome.
 
+All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_processing_script)
+
 
 # Table of Contents
 
