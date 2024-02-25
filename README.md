@@ -78,7 +78,7 @@ To denoise the demux file and group the sequences into amplicon sequence variant
 
 ### Procedure
 Used the quality score graph visualized using the `demux.qzv` file (generated in P001) to determine an appropriate truncation length for denoising + ASV clustering:
-![Quality Score Graph](QIIME_files/sequences_quality_score.png)
+![Quality Score Graph](QIIME_files/sequence_quality_score.png)
 
 #### ASV Generation (Attempt 1)
 We first set the truncation length to 303 nucleotides, as the reads at this length appeared to have a high quality score. However, this resulted in only 10 ASVs and 12 samples. ![image of frequency/feature detail](QIIME_files/QIIME_view_images/trunc_Length-303_Frequency_per_feature_detail.png)
