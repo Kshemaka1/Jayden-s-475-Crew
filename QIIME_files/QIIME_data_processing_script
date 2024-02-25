@@ -152,3 +152,21 @@ qiime diversity beta-group-significance \
   --m-metadata-column crp_status \
   --o-visualization core-metrics-results/unweighted-unifrac-crp_status-group-significance.qzv \
   --p-pairwise
+
+# Calculate beta-group-significance, focusing on C Reactive Protein (CRP) status.
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column crp_status \
+  --o-visualization core-metrics-results/unweighted-unifrac-crp_status-group-significance.qzv \
+  --p-pairwise
+
+# Calculate beta-group-significance, focusing on supplement type.
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column supplement \
+  --o-visualization core-metrics-results/unweighted-unifrac-supplement-group-significance.qzv \
+  --p-pairwise
