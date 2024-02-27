@@ -170,3 +170,165 @@ qiime diversity beta-group-significance \
   --m-metadata-column supplement \
   --o-visualization core-metrics-results/unweighted-unifrac-supplement-group-significance.qzv \
   --p-pairwise
+
+#### Feb 27 - AA ####
+
+#Alpha diversity, Shannon_Vector visualization
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity core-metrics-results/shannon_vector.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --o-visualization core-metrics-results/shannon-group-significance.qzv
+
+#Alpha diversity, observed_features visualization
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity core-metrics-results/observed_features_vector.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --o-visualization core-metrics-results/observed_features-group-significance.qzv
+
+# Beta diversity; Jaccard, focusing on anemia category
+
+  qiime diversity beta-group-significance \
+    --i-distance-matrix core-metrics-results/jaccard_distance_matrix.qza \
+    --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+    --m-metadata-column anemia \
+    --o-visualization core-metrics-results/jaccard-anemia-significance.qzv \
+    --p-pairwise
+
+# Beta diversity; Jaccard, focusing on adjusted Body Iron Storage Status
+
+ qiime diversity beta-group-significance \
+    --i-distance-matrix core-metrics-results/jaccard_distance_matrix.qza \
+    --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+    --m-metadata-column adj_bis_status \
+    --o-visualization core-metrics-results/jaccard-adj_bis_status-group-significance.qzv \
+    --p-pairwise
+
+# Beta diversity; Jaccard, focusing on adjusted Ferritin status.
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/jaccard_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column adj_ferritin_status \
+  --o-visualization core-metrics-results/jaccard-adj_ferritin_status-group-significance.qzv \
+  --p-pairwise
+
+# Beta diversity; Jaccard, focusing on adjusted Retinol Binding Protein (RBP) status.
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/jaccard_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column adj_rbp_status \
+  --o-visualization core-metrics-results/jaccard-adj_rbp_status-group-significance.qzv \
+  --p-pairwise
+
+# Beta diversity; Jaccard, focusing on C Reactive Protein (CRP) status.
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/jaccard_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column crp_status \
+  --o-visualization core-metrics-results/jaccard-crp_status-group-significance.qzv \
+  --p-pairwise
+
+# Beta diversity; Bray Curtis, focusing on anemia category
+
+  qiime diversity beta-group-significance \
+    --i-distance-matrix core-metrics-results/bray_curtis_distance_matrix.qza \
+    --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+    --m-metadata-column anemia \
+    --o-visualization core-metrics-results/bray_curtis-anemia-significance.qzv \
+    --p-pairwise
+
+# Beta diversity; Bray Curtis, focusing on adjusted Body Iron Storage Status
+
+ qiime diversity beta-group-significance \
+    --i-distance-matrix core-metrics-results/bray_curtis_distance_matrix.qza \
+    --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+    --m-metadata-column adj_bis_status \
+    --o-visualization core-metrics-results/bray_curtis-adj_bis_status-group-significance.qzv \
+    --p-pairwise 
+
+# Beta diversity; Bray Curtis, focusing on adjusted Ferritin status.
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/bray_curtis_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column adj_ferritin_status \
+  --o-visualization core-metrics-results/bray_curtis-adj_ferritin_status-group-significance.qzv \
+  --p-pairwise
+
+
+# Beta diversity; Bray Curtis, focusing on adjusted Retinol Binding Protein (RBP) status.
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/bray_curtis_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column adj_rbp_status \
+  --o-visualization core-metrics-results/bray_curtis-adj_rbp_status-group-significance.qzv \
+  --p-pairwise
+
+
+# Beta diversity; Bray Curtis, focusing on C Reactive Protein (CRP) status.
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/bray_curtis_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column crp_status \
+  --o-visualization core-metrics-results/bray_curtis-crp_status-group-significance.qzv \
+  --p-pairwise
+
+# Beta diversity; Weighted Unifrac, focusing on anemia category
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/weighted_unifrac_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column anemia \
+  --o-visualization core-metrics-results/weighted-unifrac-anemia-significance.qzv \
+  --p-pairwise
+
+# Beta diversity; Weighted Unifrac, focusing on adjusted Body Iron Storage Status
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/weighted_unifrac_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column adj_bis_status \
+  --o-visualization core-metrics-results/weighted-unifrac-adj_bis_status-group-significance.qzv \
+  --p-pairwise
+
+# Beta diversity; Weighted Unifrac, focusing on adjusted Ferritin status.
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/weighted_unifrac_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column adj_ferritin_status \
+  --o-visualization core-metrics-results/weighted-unifrac-adj_ferritin_status-group-significance.qzv \
+  --p-pairwise
+
+# Beta diversity; Weighted Unifrac, focusing on adjusted Retinol Binding Protein (RBP) status.
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/weighted_unifrac_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column adj_rbp_status \
+  --o-visualization core-metrics-results/weighted-unifrac-adj_rbp_status-group-significance.qzv \
+  --p-pairwise
+
+# Beta diversity; Weighted Unifrac, focusing on C Reactive Protein (CRP) status.
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/weighted_unifrac_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column crp_status \
+  --o-visualization core-metrics-results/weighted-unifrac-crp_status-group-significance.qzv \
+  --p-pairwise
+
+# Beta diversity; Weighted Unifrac, focusing on C Reactive Protein (CRP) status.
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/weighted_unifrac_distance_matrix.qza \
+  --m-metadata-file /mnt/datasets/project_2/anemia/anemia_metadata.txt \
+  --m-metadata-column crp_status \
+  --o-visualization core-metrics-results/weighted-unifrac-crp_status-group-significance.qzv \
+  --p-pairwise
+
