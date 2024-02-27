@@ -35,6 +35,10 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
 - Clarify research question for project and workflow/aims 
 - Next steps: Work towards AIM 2: Diversity Analysis
 
+### February 27 2024 at 2:15 pm PST
+- Provide update of work done so far --> AIM 1/2: Diversity analysis complete
+- Go over relevant questons related to Aim 2 (interpreting p-values)
+- Next steps: Work towards AIM 3: Differential Abundance Analysis
 
 # Lab Notebook
 
