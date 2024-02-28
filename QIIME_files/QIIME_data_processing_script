@@ -332,3 +332,29 @@ qiime diversity beta-group-significance \
   --o-visualization core-metrics-results/weighted-unifrac-crp_status-group-significance.qzv \
   --p-pairwise
 
+#### Feb 28 - AA ####
+
+##Converting/exporting files to create a phyloseq object
+
+#Exporting table.qza as feature-table.txt
+
+qiime tools export \
+--input-path table.qza \
+--output-path table_export 
+
+biom convert \
+-i feature-table.biom \
+--to-tsv \
+-o feature-table.txt
+
+#Exporting taxonomy_truncated.qzv to tsv
+
+qiime tools export \
+--input-path /data/anemia/rooted-tree.qza \
+--output-path rooted-tree_export
+
+#Exporting rooted-tree.qza to .nwk file
+
+qiime tools export \
+--input-path /data/anemia/rooted-tree.qza \
+--output-path rooted-tree_export
