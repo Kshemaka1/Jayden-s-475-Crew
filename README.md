@@ -103,7 +103,30 @@ As a result, we reattempted the denoising using a truncation length of 253 nucle
 - On the server, the following files were generated: `rep-seqs.qza`, `rep-seqs.qzv`, `stats.qza`, `stats.qzv`, `table.qza`, `table.qzv` - all stored in `/data/anemia/`.
 - On the repository, the `rep-seqs.qzv` and `table.qzv` files are located in: `QIIME_files/Trunc-length_253`
 
+## P003: Taxonomic Analysis
+**Date:** Feb 15th, 2024
 
-## Taxonomy Analysis
+### Purpose:
+To train a classifier to do taxonomic analysis and generate a taxa bar graph
 
-- **Note**: Analysis in progress. Details will be updated upon completion.
+### Procedure:
+
+#### Training our classifier 
+1. Extract our amplicon of interest from the reference database `silva-138-99-515-806-nb-classifier.qza` with our desired truncation length of 253.
+2. Input sequences from `rep-seqs.qza` generated from P002.
+3. Output a trimmed file `ref-seqs-trimmed.qza` which can be found on server `/data/anemia/`.
+4. Train classifier with this new `ref-seq-trimmed` file.
+5. Input `ref-seqs-trimmed.qza` and compare it to the reference database `silva-138-99-515-806-nb-classifier.qza`.
+6. Output trained classifier `classifier.qza` which can be found on server `/data/anemia/`.
+7. Use this trained classifier to assign taxonomy to our reads (`rep-seqs.qza`).
+8. Input `classifier.qza` along with our reads `rep-seqs.qza`.
+9. Output our taxonomy file `taxonomy.qza`.
+
+#### Taxonomic Analysis
+1. Convert `taxonomy.qza` to `taxonomy.qzv` for visualization on QIIME2 View.
+2. Generate taxonomy bar plot by inputting `table.qza`, `taxonomy.qza`, and `anemia_metadata.txt` files.
+3. Visualize the output file `taxa-bar-plots-truncated.qzv` using QIIME2 View which can be found on our server.
+   - Server path: `/data/anemia/taxonomy_truncated/taxa-bar-plots-truncated.qzv`
+   
+*taxa-bar-plots-truncated.qzv - Taxonomy Level 3*
+![image of taxonomy bar plot](QIIME_files/QIIME_view_images/taxabarplot.png)
