@@ -18,6 +18,7 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
    - [P001: Importing and Demultiplexing the Anemia Dataset](#P001-Importing-and-Demultiplexing-the-Anemia-Dataset)
    - [P002: Generating ASVs](#P002-Generating-ASVs)
    - [P003: Taxonomic Analysis](#P003-Taxonomic-Analysis)
+   - [P006: Creating a Phyloseq Object](#P006-Creating-a-Phyloseq-Object)
 
 
 # Project Aims
@@ -148,3 +149,38 @@ To filter out mitochondria and chloroplast features and generate an alpha rarefa
 
 *alpha_rarefaction.qzv*
 ![image of alpha_rarefaction_curve](QIIME_files/QIIME_view_images/alpha_rarefaction_curve.png)
+
+## P006: Creating a Phyloseq Object
+## Feb 28th, 2024
+
+### Purpose: To create a Phyloseq object from our dataset to carry out alpha/beta diversity analysis in R and for future downstream analysis (such as differential abundance).
+
+### Procedure:
+
+**Loaded Data:**
+1. Metadata, OTU table, taxonomy, and phylogenetic tree data were read from their respective files.
+
+**Formatting Loaded Data:**
+1. The OTU table was transformed into a matrix format: OTU IDs were set as row names and were converted into phyloseq class using the `otu_table` function.
+2. Sample Metadata was converted into a data frame. Sample IDs were set as row names and the data was converted into phyloseq class using the `sample_data` function.
+3. Taxonomic strings in the taxonomy file were parsed to separate taxonomic ranks into individual columns, and converted into a matrix format, and feature IDs (OTU IDs) were set as row names.
+4. A taxonomy class object suitable for use in phyloseq was created using the `tax_table` function.
+
+**Created Phyloseq Object:**
+1. The formatted OTU table, sample metadata, taxonomy table, and phylogenetic tree were combined into a single phyloseq object using the `phyloseq` function.
+2. This phyloseq object contains all the necessary data for downstream analysis.
+
+**Analyzed Data:**
+1. Mitochondrial and chloroplast sequences were filtered out from the dataset.
+2. OTUs with low total counts across all samples (less than 5 counts) were removed.
+3. Samples with less than 100 reads were excluded.
+4. Samples where data was missing or NA in metadata fields were filtered out.
+5. The dataset was subsetted to include only samples from individuals with anemia.
+6. Further subsetted the dataset to include only samples from 12-month-old infants.
+7. Rarefied the 12-month samples to a uniform depth of 10,000 reads per sample, based on previous qzv analysis (P002).
+
+**Saved Results:**
+- All R files are stored under `Phyloseq_Files`.
+- The filtered and processed data were saved as RData files for future use.
+- The 12-month-old anemic data before rarefication are stored under: `Phyloseq_Files/12M_anemia_final.RData`.
+- The rarefied RData is stored under: `Phyloseq_Files/anemia_rare.RData`.
