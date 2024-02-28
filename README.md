@@ -130,3 +130,21 @@ To train a classifier to do taxonomic analysis and generate a taxa bar graph
    
 *taxa-bar-plots-truncated.qzv - Taxonomy Level 3*
 ![image of taxonomy bar plot](QIIME_files/QIIME_view_images/taxabarplot.png)
+
+## P003: Generating an Alpha Rarefaction Curve
+**Date:** Feb 17th, 2024
+
+### Purpose: 
+To filter out mitochondria and chloroplast features and generate an alpha rarefaction curve
+
+### Procedure:
+
+1. Filter out mitochondria and chloroplast from our `table.qza` (from P002) to generate a filtered `table-no-mitochondria-no-chloroplast.qza` table.
+2. Convert this file to `table-no-mitochondria-no-chloroplast.qzv` for visualization on QIIME2 view.
+3. Generate a tree for phylogenetic diversity analyses using the `rep-seqs.qza` (from P002). Output files `aligned-rep-seqs.qza`, `masked-aligned-rep-seqs.qza`, `unrooted-tree.qza`, and `rooted-tree.qza` can be found on server `/data/anemia/`.
+4. Rarefy data to a depth of 50,000 using `table.qza`, the `rooted-tree.qza` that was generated, and `anemia_metadata.txt` metadata file.
+   - This depth was chosen because this value lies close to the max frequency per sample (58,297) observed in the table summary (from P002). This will allow us to clearly identify where the curve plateaus.
+5. The generated alpha rarefaction curve file `alpha-rarefaction.qzv` can be found in our server: `/data/anemia`.
+
+*alpha_rarefaction.qzv*
+![image of alpha_rarefaction_curve](QIIME_files/QIIME_view_images/alpha_rarefaction_curve.png)
