@@ -17,7 +17,7 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
 3. [Lab Notebook](#Lab-Notebook)
    - [P001: Importing and Demultiplexing the Anemia Dataset](#P001-Importing-and-Demultiplexing-the-Anemia-Dataset)
    - [P002: Generating ASVs](#P002-Generating-ASVs)
-
+   - [P003: Taxonomic Analysis](#P003-Taxonomic-Analysis)
 
 
 # Project Aims
