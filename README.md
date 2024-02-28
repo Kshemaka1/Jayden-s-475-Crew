@@ -151,7 +151,7 @@ To filter out mitochondria and chloroplast features and generate an alpha rarefa
 ![image of alpha_rarefaction_curve](QIIME_files/QIIME_view_images/alpha_rarefaction_curve.png)
 
 ## P006: Creating a Phyloseq Object
-## Feb 28th, 2024
+**Date:** Feb 28th, 2024
 
 ### Purpose: To create a Phyloseq object from our dataset to carry out alpha/beta diversity analysis in R and for future downstream analysis (such as differential abundance).
 
