@@ -153,7 +153,8 @@ To filter out mitochondria and chloroplast features and generate an alpha rarefa
 ## P006: Creating a Phyloseq Object
 **Date:** Feb 28th, 2024
 
-### Purpose: To create a Phyloseq object from our dataset to carry out alpha/beta diversity analysis in R and for future downstream analysis (such as differential abundance).
+### Purpose: 
+To create a Phyloseq object from our dataset to carry out alpha/beta diversity analysis in R and for future downstream analysis (such as differential abundance).
 
 ### Procedure:
 
@@ -186,8 +187,9 @@ To filter out mitochondria and chloroplast features and generate an alpha rarefa
 - The rarefied RData is stored under: `Phyloseq_Files/anemia_rare.RData`.
   
 ## P007: Alpha Diversity Analyses in R
-Feb 28th, 2024
-Aim: To conduct richness and diversity analyses on the various indicators for metabolism using the anemia_rare.RData file from P006.
+**Date:** Feb 28th, 2024
+### Purpose: 
+To conduct richness and diversity analyses on the various indicators for metabolism using the anemia_rare.RData file from P006.
 
 ### Load in RData
 - Loaded previously saved RData files containing processed data:
@@ -202,7 +204,7 @@ Aim: To conduct richness and diversity analyses on the various indicators for me
   - Customized a richness plot to include the adjusted body iron storage as a factor, using the `adj_bis_status` variable.
   - Saved the customized richness plot as an image file named "plot_richness.png" in: `Phyloseq_Files/Alpha_Diversity_Plots/Adj_bis_status/plot_richness.png`.
     
-!![image of plot_richness](Phyloseq_Files/Alpha_Diversity_Plots/Adj_bis_status/plot_richness.png)
+![image of plot_richness](Phyloseq_Files/Alpha_Diversity_Plots/Adj_bis_status/plot_richness.png)
 
 - **Estimated Richness:**
   - Estimated the richness of microbial communities using the rarefied data.
@@ -213,7 +215,7 @@ Aim: To conduct richness and diversity analyses on the various indicators for me
   - Computed Faith's phylogenetic diversity (PD) using the rarefied data and the associated phylogenetic tree.
   - Calculated phylogenetic distances among samples using the `pd()` function.
   - Added PD values to the sample metadata table under the column named "PD".
-!![image of phylogeny_plot](Phyloseq_Files/Alpha_Diversity_Plots/Adj_bis_status/phylogeny_plot(Faith's).png)
+![image of phylogeny_plot](Phyloseq_Files/Alpha_Diversity_Plots/Adj_bis_status/phylogeny_plot(Faith's).png)
 - **Plotted Phylogenetic Diversity Against Metadata:**
   - Plotted phylogenetic diversity (PD) against the adjusted body iron storage status to explore its relationship.
   - Generated a boxplot to visualize the distribution of PD across different levels of adjusted body iron storage.
