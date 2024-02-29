@@ -19,6 +19,7 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
    - [P002: Generating ASVs](#P002-Generating-ASVs)
    - [P003: Taxonomic Analysis](#P003-Taxonomic-Analysis)
    - [P006: Creating a Phyloseq Object](#P006-Creating-a-Phyloseq-Object)
+   - [P007: Alpha Diversity Analyses in R](#P007-Alpha-Diversity-Analyses-in-R)
 
 
 # Project Aims
