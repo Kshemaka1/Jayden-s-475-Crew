@@ -199,7 +199,7 @@ To conduct richness and diversity analyses on the various indicators for metabol
 
 ### Alpha Diversity Analysis
 - **Performed Alpha Diversity Analysis:**
-  - Calculated and visualized alpha diversity metrics using the rarefied data.
+  - Calculated and visualized alpha diversity metrics using the 12M_anemia_final.RData.
   - Visualized richness of microbial communities using a richness plot generated with the `plot_richness()` function.
   - Generated richness plot with additional alpha diversity metrics, including Shannon diversity and Chao1 estimator.
   - Customized a richness plot to include the adjusted body iron storage as a factor, using the `adj_bis_status` variable.
