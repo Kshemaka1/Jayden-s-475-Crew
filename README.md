@@ -177,7 +177,7 @@ To create a Phyloseq object from our dataset to carry out alpha/beta diversity a
 2. OTUs with low total counts across all samples (less than 5 counts) were removed.
 3. Samples with less than 100 reads were excluded.
 4. Samples where data was missing or NA in metadata fields were filtered out.
-5. The dataset was subsetted to include only samples from individuals with anemia.
+5. The dataset was subsetted to include **only samples from individuals with anemia**.
 6. Further subsetted the dataset to include only samples from 12-month-old infants.
 7. Rarefied the 12-month samples to a uniform depth of 10,000 reads per sample, based on previous qzv analysis (P002).
 
