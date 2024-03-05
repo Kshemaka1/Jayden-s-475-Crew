@@ -183,6 +183,7 @@ To create a Phyloseq object from our dataset to carry out alpha/beta diversity a
 
 **Saved Results:**
 - All R files are stored under `Phyloseq_Files`.
+- The **R Script** is here: `Phyloseq_Files/phyloseq_object.R`
 - The filtered and processed data were saved as RData files for future use.
 - The 12-month-old anemic data before rarefication are stored under: `Phyloseq_Files/12M_anemia_final.RData`.
 - The rarefied RData is stored under: `Phyloseq_Files/anemia_rare.RData`.
