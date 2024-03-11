@@ -31,16 +31,44 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
 
 # Agenda
 
+### March 04 2024 at 10:00 am 
+#### Introduction
+- Recap of progress:
+  - Conversion of anemia data into a phyloseq object in R.
+  - Filtering out missing/NA samples and generating a rarefaction curve.
+  - Filtering samples to include only anemic samples, specifically those who are 12 months old.
+
+#### Objective
+- Proposal to examine the relationship between metabolic markers and infection status in anemic children.
+- Focus on 12-month-old anemic children.
+- Investigating whether infected anemic children with markers signaling worse metabolism exhibit higher richness/abundance of inflammatory microbial species compared to those with better metabolism.
+- Exploring similar patterns among uninfected anemic children.
+
+#### Proposed Methodology
+- Analyzing each metabolic marker individually within anemic children to determine significant differences in alpha/beta diversity.
+- Metabolic markers include Adjusted Body Iron Storage (BIS) Status, Adjusted Ferritin Status, Adjusted Retinol Binding Protein (RBP) Status, and C Reactive Protein (CRP) Status.
+- Conducting diversity metrics on infection status among anemic children, possibly bypassing this step due to previous findings.
+- Grouping all infection statuses together as infected or uninfected.
+- Assessing variations in microbial species abundance/diversity across different markers among infected and uninfected anemic children.
+
+#### Data Analysis
+- Considering the use of t-tests to evaluate significance for alpha diversity plots.
+- Alpha diversity analysis conducted on anemic 12-month-old patients found significance with Shannon diversity for adjusted ferritin status.
+- Discussion on parametric vs. non-parametric tests, considering normal distribution.
+- Considering non-parametric tests for later analysis.
+- Uncertainty regarding performing a t-test on the phylogenetic Faith PD data.
+
+### February 27 2024 at 2:15 pm PST
+- Provide update of work done so far --> AIM 1/2: Diversity analysis complete
+- Go over relevant questons related to Aim 2 (interpreting p-values)
+- Next steps: Work towards AIM 3: Differential Abundance Analysis
+
 ### February 14 2024 at 2:15 pm PST
 - Provide update of work done so far --> AIM 1: Microbiome Data Processing complete
 - Go over relevant questons related to Aim 1 (e.g. training classifiers)
 - Clarify research question for project and workflow/aims 
 - Next steps: Work towards AIM 2: Diversity Analysis
 
-### February 27 2024 at 2:15 pm PST
-- Provide update of work done so far --> AIM 1/2: Diversity analysis complete
-- Go over relevant questons related to Aim 2 (interpreting p-values)
-- Next steps: Work towards AIM 3: Differential Abundance Analysis
 
 # Lab Notebook
 
