@@ -103,6 +103,32 @@ samp_dat_wdiv <- data.frame(samp_dat, alphadiv)
 t.test(samp_dat_wdiv$Shannon ~ samp_dat_wdiv$adj_rbp_status)
 t.test(samp_dat_wdiv$Chao1 ~ samp_dat_wdiv$adj_rbp_status)
 
+#### Alpha diversity - Infection Status ####
+
+plot_richness(anemia_rare) 
+
+plot_richness(anemia_rare, measures = c("Shannon","Chao1")) 
+
+
+gg_richness <- plot_richness(anemia_rare, x = "infection_status", measures = c("Shannon","Chao1")) +
+  xlab("Infection Status") +
+  geom_boxplot()
+gg_richness
+
+estimate_richness(anemia_rare)
+
+
+# Need to extract information
+alphadiv <- estimate_richness(anemia_rare)
+samp_dat <- sample_data(anemia_rare)
+samp_dat_wdiv <- data.frame(samp_dat, alphadiv)
+
+#ANOVA shannon vs. infection_status
+
+lm_shannon_vs_infection <- lm(Shannon ~ infection_status, data=samp_dat_wdiv)
+aov_shannon_vs_infection <- aov(lm_shannon_vs_infection)
+summary(aov_shannon_vs_infection)
+
 # phylogenetic diversity
 
 # calculate Faith's phylogenetic diversity as PD

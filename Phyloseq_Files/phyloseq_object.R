@@ -77,10 +77,15 @@ indices_to_keep <- !apply(sample_data(anemia_filt_nolow_samps), 1, function(row)
 anemia_filt_nolow_samps_NA_filtered <- prune_samples(indices_to_keep, anemia_filt_nolow_samps)
 #Filter samples for only individuals with anemia
 anemia_filt_nolow_samps_anemic_NA_filtered <- subset_samples(anemia_filt_nolow_samps_NA_filtered, anemia == "anemic")
+#Create new column with Infected and Normal status only; Defined Early Convalescence, Late Convalescence, and Incubation into Infected status and Reference into Normal status
+sample_data_df <- data.frame(sample_data(anemia_filt_nolow_samps_anemic_NA_filtered))
+sample_data_df$infection_status_updated <- ifelse(sample_data_df$infection_status == "Reference", "Normal", "Infected")
+sample_data(anemia_filt_nolow_samps_anemic_NA_filtered) <- sample_data_df
+anemia_filt_infection_updated <- anemia_filt_nolow_samps_anemic_NA_filtered
 #Filter samples for only 12-month-old infants
-TwelveM_anemia <- subset_samples(anemia_filt_nolow_samps_anemic_NA_filtered, age_months == 12)
+TwelveM_anemia <- subset_samples(anemia_filt_infection_updated, age_months == 12)
 #Filter samples for only 6-month-old infants
-SixM_anemia <- subset_samples(anemia_filt_nolow_samps_anemic_NA_filtered, age_months == 6)
+SixM_anemia <- subset_samples(anemia_filt_infection_updated, age_months == 6)
 
 #Proceeding with only 12-month samples, rarefy samples
 rarecurve(t(as.data.frame(otu_table(TwelveM_anemia))), cex=0.1)
