@@ -36,6 +36,15 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
 - Picrust analysis was done - go over results
 - Alpha diversity box plot for adj_ferritin_status (which had significance) was cleaned up for paper
 - alpha diversity + anova was conducted on infection status --> resulting box plots were also cleaned up for paper
+#### To Do for Next Week:
+Figures to do:
+1. infected (with 3 stages) do alpha diversity and beta diversity within the 3 stages in anemic patients
+2. alpha and beta diversity in just infected anemic patients comparing adj_ferritin_status --> see if there is difference b/w high vs low inflammation
+3. do differential abundance 
+4. do core microbiome analysis
+5. picrust pathway analysis
+6. may add in enzymes
+
 
 ### March 06 2024 at 10:00 am 
 #### Introduction
