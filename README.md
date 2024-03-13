@@ -223,8 +223,8 @@ To conduct richness and diversity analyses on the various indicators for metabol
 
 ### Load in RData
 - Loaded previously saved RData files containing processed data:
-  - "anemia_rare.RData", containing rarefied data for analysis.
   - "12M_anemia_final.RData", containing filtered and processed data specific to 12-month-old infants **with anemia**.
+  - "anemia_rare.RData", containing the rarefied "12M_anemia_final.RData" for analysis
                  - this is the file we'll be focusing on
 
 ### Alpha Diversity Analysis
