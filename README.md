@@ -24,14 +24,20 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
 
 # Project Aims
 - Aim 1: Microbiome Data Processing: Use Qiime2 for initial microbiome data processing to set the stage for detailed analysis.
-- Aim 2: Diversity Analysis: Examine microbial diversity using Qiime or R to identify significant differences related to anemia.
-- Aim 3: Targeted Analysis: Focus on interesting findings from the diversity analysis for deeper investigation, potentially expanding to differential abundance analysis.
-- Aim 4: Metabolic Pathway Analysis: Use PICRUSt2 for functional analysis to identify metabolic pathways affected by anemia, using server-based and R analyses.
-- Aim 5: Development of Predictive Models: Use identified metabolic markers to develop models predicting anemia
+- Aim 2: Diversity Analysis: Use R to carry out alpha/beta diversity analyses to examine the association between selected metabolic markers (Adjusted Body Iron Storage, Adjusted Ferritin Status, Adjusted Retinol Binding Protein Status, and C Reactive Protein Status) and microbial diversity within 12-month old anemic children
+- Aim 3: Infection Status Diversity Metrics: Investigate microbiome differences in anemic children by categorizing each sample as either infected or uninfected, informed by prior evidence suggesting minimal variation across infection stages.
+- Aim 4: Targeted Analysis: Focus on the relationship between metabolic markers and microbial abundance/diversity specifically in infected anemic children, expanding to differential abundance analysis afterwards.
+- Aim 5: Metabolic Pathway Analysis: Use PICRUSt2 for functional analysis to determine metabolic pathways in anemic children with infection that are influenced by microbiome composition
+- Aim 6: Development of Predictive Models: Use identified metabolic markers from anemic children, segmented by infection status, to create predictive models for microbial richness/abundance and potential inflammatory species presence.
 
 # Agenda
 
-### March 04 2024 at 10:00 am 
+### March 13 2024 at 10:00 am 
+- Picrust analysis was done - go over results
+- Alpha diversity box plot for adj_ferritin_status (which had significance) was cleaned up for paper
+- alpha diversity + anova was conducted on infection status --> resulting box plots were also cleaned up for paper
+
+### March 06 2024 at 10:00 am 
 #### Introduction
 - Recap of progress:
   - Conversion of anemia data into a phyloseq object in R.
