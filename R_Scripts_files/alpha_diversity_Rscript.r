@@ -51,7 +51,7 @@ gg_richness_fer <- plot_richness(anemia_rare, x = "adj_ferritin_status", measure
 gg_richness_fer
 
 # t.test()
-t.test(samp_dat_wdiv$Shannon ~ samp_dat_wdiv$adj_ferritin_status)
+t_test_result <- t.test(samp_dat_wdiv$Shannon ~ samp_dat_wdiv$adj_ferritin_status)
 t.test(samp_dat_wdiv$Chao1 ~ samp_dat_wdiv$adj_ferritin_status)
 
 # plot Ferritin Status against the PD
@@ -62,6 +62,53 @@ fer.plot.pd <- ggplot(sample_data(anemia_rare), aes(adj_ferritin_status, PD)) +
 
 # view plot
 gg_diversity_fer <- fer.plot.pd
+
+#### Making Plot of Alpha Diversity for Adjusted Ferritin Status ####
+# Extract the p-value for 'infection_status'
+p_value_fer <- t_test_result$p.value
+
+# Create a significance label based on the p-value
+signif_label_fer <- ifelse(p_value_fer < 0.05, "p < 0.05", "NS")
+
+# Calculate x_pos for the plot with two categories
+x_pos_fer <- 1.5  
+
+# Since there are only two categories, adjust y_pos accordingly
+y_pos_fer <- max(samp_dat_wdiv$Shannon) + 0.2
+
+# Add a buffer on top of the maximum y-value for the y-axis limit
+buffer_amount <- (max(samp_dat_wdiv$Shannon, na.rm = TRUE) - min(samp_dat_wdiv$Shannon, na.rm = TRUE)) * 0.1
+y_limit <- max(samp_dat_wdiv$Shannon, na.rm = TRUE) + buffer_amount
+
+# Plot richness for adjusted ferritin status
+gg_richness_fer <- ggplot(samp_dat_wdiv, aes(x = adj_ferritin_status, y = Shannon, fill = adj_ferritin_status)) +
+  expand_limits(y = c(NA, y_limit)) +
+  geom_boxplot() +
+  geom_point(position = position_jitter(width = 0.2), color = "black", alpha = 0.8) +
+  scale_fill_hue() +  # Use ggplot's built-in color palette
+  theme_minimal() +
+  theme(
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.border = element_rect(colour = "black", fill=NA, size=0.5),
+    axis.ticks = element_line(color = "black")
+  ) +
+  labs(
+    x = "", 
+    y = "Shannon Diversity Index",
+    fill = "Adjusted Ferritin Status",
+    title = "Alpha Diversity in 12-Month-Old Anemic Patients", 
+    color = "Adjusted Ferritin Status"
+  ) + 
+  geom_text(x = x_pos_fer, y = y_pos_fer, label = signif_label_fer, size = 3.5, vjust = 0, fontface = "plain") + 
+  geom_segment(x = 1, xend = 2, y = y_pos_fer - 0.05, yend = y_pos_fer - 0.05, color = "black") +
+  geom_segment(x = 1, xend = 1, y = y_pos_fer - 0.05, yend = y_pos_fer - 0.08, color = "black") +
+  geom_segment(x = 2, xend = 2, y = y_pos_fer - 0.05, yend = y_pos_fer - 0.08, color = "black")
+
+# Print the plot to view it
+print(gg_richness_fer)
 
 
 #### Alpha diversity - Adjusted Body Iron Storage Status ####
@@ -142,8 +189,8 @@ p_value <- anova_summary[[1]]$"Pr(>F)"[1]
 # Create a significance label based on the p-value
 signif_label <- ifelse(p_value < 0.05, "p < 0.05", "NS")
 
-x_pos <- 2.5  
-y_pos <- max(samp_dat_wdiv$Shannon + 0.2)
+x_pos_inf <- 2.5  
+y_pos_inf <- max(samp_dat_wdiv$Shannon + 0.2)
 
 # Add a buffer on top of the maximum y-value
 buffer_amount <- (max(samp_dat_wdiv$Shannon, na.rm = TRUE) - min(samp_dat_wdiv$Shannon, na.rm = TRUE)) * 0.1
@@ -182,10 +229,10 @@ gg_richness_inf <- ggplot(df, aes(x = infection_status, y = shannon, fill = infe
     title = "", 
     color = NULL # Remove color label from legend
   ) + 
-  geom_text(x = x_pos, y = y_pos, label = signif_label, size = 3.5, vjust = 0, fontface = "plain") +
-  geom_segment(x = 1, xend = 4, y = y_pos - 0.05, yend = y_pos - 0.05, color = "black") + # Horizontal line
-  geom_segment(x = 1, xend = 1, y = y_pos - 0.05, yend = y_pos - 0.08, color = "black") + # Left vertical line
-  geom_segment(x = 4, xend = 4, y = y_pos - 0.05, yend = y_pos - 0.08, color = "black") # Right vertical line
+  geom_text(x = x_pos_inf, y = y_pos_inf, label = signif_label, size = 3.5, vjust = 0, fontface = "plain") +
+  geom_segment(x = 1, xend = 4, y = y_pos_inf - 0.05, yend = y_pos_inf - 0.05, color = "black") + # Horizontal line
+  geom_segment(x = 1, xend = 1, y = y_pos_inf - 0.05, yend = y_pos_inf - 0.08, color = "black") + # Left vertical line
+  geom_segment(x = 4, xend = 4, y = y_pos_inf - 0.05, yend = y_pos_inf - 0.08, color = "black") # Right vertical line
 
 # Print the plot to view it
 gg_richness_inf
