@@ -12,22 +12,22 @@ library(dplyr)
 load("12M_anemia_final.RData")
 # Add new column to Phyloseq Object with an infection category which classifies participants as either infected or normal
 # Access the sample data from phyloseq object
-anemia_rare_data <- sample_data(TwelveM_anemia)
+anemia_data <- sample_data(TwelveM_anemia)
 
 # Apply the condition to modify/create a new column, named 'infection_category'
-anemia_rare_data$infection_status_updated <- ifelse(anemia_rare_data$infection_status %in% c("Early Convalescence", "Late Convalescence", "Incubation"),
+anemia_data$infection_status_updated <- ifelse(anemia_data$infection_status %in% c("Early Convalescence", "Late Convalescence", "Incubation"),
                                               "Infected",
-                                              ifelse(anemia_rare_data$infection_status == "Reference",
+                                              ifelse(anemia_data$infection_status == "Reference",
                                                      "Normal", NA))
 
 # Update the sample data in your phyloseq object
-sample_data(TwelveM_anemia) <- anemia_rare_data
+sample_data(TwelveM_anemia) <- anemia_data
 
 # Now, filter the phyloseq object to include only samples where infection_status_updated is "Infected"
-anemia_rare_infected <- subset_samples(TwelveM_anemia, infection_status_updated == "Infected")
+anemia_infected <- subset_samples(TwelveM_anemia, infection_status_updated == "Infected")
 
 #### DESeq ####
-anemia_deseq <- phyloseq_to_deseq2(anemia_rare_infected, ~`adj_ferritin_status`)
+anemia_deseq <- phyloseq_to_deseq2(anemia_infected, ~`adj_ferritin_status`)
 DESEQ_anemia <- DESeq(anemia_deseq)
 res <- results(DESEQ_anemia, tidy=TRUE, 
                #this will ensure that normal is the reference group
@@ -71,7 +71,7 @@ sigASVs_vec <- sigASVs %>%
   pull(ASV)
 
 # Prune phyloseq file
-anemia_DESeq <- prune_taxa(sigASVs_vec,anemia_rare_infected)
+anemia_DESeq <- prune_taxa(sigASVs_vec,anemia_infected)
 sigASVs <- tax_table(anemia_DESeq) %>% as.data.frame() %>%
   rownames_to_column(var="ASV") %>%
   right_join(sigASVs) %>%
