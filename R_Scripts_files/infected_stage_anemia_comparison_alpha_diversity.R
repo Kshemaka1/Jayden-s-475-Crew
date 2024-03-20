@@ -102,7 +102,7 @@ gg_richness_inf <- ggplot(df, aes(x = infection_status, y = shannon, fill = infe
     color = NULL # Remove color label from legend
   ) + 
   geom_text(x = x_pos_inf, y = y_pos_inf, label = signif_label, size = 3.5, vjust = 0, fontface = "plain") +
-  geom_segment(x = 1, xend = 4, y = y_pos_inf - 0.05, yend = y_pos_inf - 0.05, color = "black") + # Horizontal line
+  geom_segment(x = 1, xend = 3, y = y_pos_inf - 0.05, yend = y_pos_inf - 0.05, color = "black") + # Horizontal line
   geom_segment(x = 1, xend = 1, y = y_pos_inf - 0.05, yend = y_pos_inf - 0.08, color = "black") + # Left vertical line
   geom_segment(x = 4, xend = 4, y = y_pos_inf - 0.05, yend = y_pos_inf - 0.08, color = "black") # Right vertical line
 
