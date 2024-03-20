@@ -10,6 +10,11 @@ library(patchwork)
 library(DESeq2)
 library(ggh4x)
 
+#Import your metadata file, no need to filter yet
+metadata <- read_delim("anemia_metadata.txt")
+metadata <- subset(metadata, anemia == "anemic")
+metadata$infection_status_updated <- ifelse(metadata$infection_status %in% c("Early Convalescence", "Late Convalescence", "Incubation"), "Infected", ifelse(metadata$infection_status == "Reference", "Normal", NA))
+metadata <- subset(metadata, infection_status_updated == "Infected")
 
 #### Import files and preparing tables ####
 #Importing the pathway PICrsut2
@@ -17,14 +22,11 @@ abundance_file <- "pathway_abundance.tsv"
 abundance_data <- read_delim(abundance_file, delim = "\t", col_names = TRUE, trim_ws = TRUE)
 abundance_data  =as.data.frame(abundance_data)
 
-#Import your metadata file, no need to filter yet
-metadata <- read_delim("anemia_metadata.txt")
-
 #Example Looking at subject number
 #If you have multiple variants, filter your metadata to include only 2 at a time
 
 #Remove NAs for your column of interest in this case subject
-metadata = metadata[metadata$anemia != "Missing: Not collected", ]
+metadata = metadata[!is.na(metadata$adj_ferritin_status),]
 
 #Filtering the abundance table to only include samples that are in the filtered metadata
 
@@ -47,7 +49,7 @@ metadata = metadata[metadata$`#SampleID` %in% abun_samples,] #making sure the fi
 #### DESEq ####
 #Perform pathway DAA using DESEQ2 method
 abundance_daa_results_df <- pathway_daa(abundance = abundance_data_filtered %>% column_to_rownames("#OTU ID"), 
-                                        metadata = metadata, group = "anemia", daa_method = "DESeq2")
+                                        metadata = metadata, group = "adj_ferritin_status", daa_method = "DESeq2")
 
 # Annotate MetaCyc pathway so they are more descriptive
 metacyc_daa_annotated_results_df <- pathway_annotation(pathway = "MetaCyc", 
@@ -68,24 +70,24 @@ abundance = abundance_data_filtered %>% filter(pathway %in% feature_with_p_0.05$
 colnames(abundance)[1] = "feature"
 abundance_desc = inner_join(abundance,metacyc_daa_annotated_results_df, by = "feature")
 abundance_desc$feature = abundance_desc$description
-#this line will change for each dataset. 190 represents the number of samples in the filtered abundance table
-abundance_desc = abundance_desc[,-c(190:ncol(abundance_desc))] 
+#this line will change for each dataset. 41 represents the number of samples in the filtered abundance table
+abundance_desc = abundance_desc[,-c(41:ncol(abundance_desc))] 
 
 # Generate a heatmap
-pathway_heatmap(abundance = abundance_desc %>% column_to_rownames("feature"), metadata = metadata, group = "anemia")
+pathway_heatmap(abundance = abundance_desc %>% column_to_rownames("feature"), metadata = metadata, group = "adj_ferritin_status")
 
 # Generate pathway PCA plot
-pathway_pca(abundance = abundance_data_filtered %>% column_to_rownames("pathway"), metadata = metadata, group = "subject")
+pathway_pca(abundance = abundance_data_filtered %>% column_to_rownames("pathway"), metadata = metadata, group = "adj_ferritin_status")
 
 # Generating a bar plot representing log2FC from the custom deseq2 function
 
 # Go to the Deseq2 function script and update the metadata category of interest
 
 # Lead the function in
-source("DESeq2_function.R")
+source("DESeq2_function (1).R")
 
 # Run the function on your own data
-res =  DEseq2_function(abundance_data_filtered, metadata, "subject")
+res =  DEseq2_function(abundance_data_filtered, metadata, "adj_ferritin_status")
 res$feature =rownames(res)
 res_desc = inner_join(res,metacyc_daa_annotated_results_df, by = "feature")
 res_desc = res_desc[, -c(8:13)]
