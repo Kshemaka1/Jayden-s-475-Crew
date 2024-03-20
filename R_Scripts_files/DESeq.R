@@ -41,15 +41,28 @@ ggplot(res) +
   geom_point(aes(x=log2FoldChange, y=-log10(padj)))
 
 ## Make variable to color by whether it is significant + large change
-vol_plot <- res %>%
-  mutate(significant = padj<0.05 & abs(log2FoldChange)>2) %>%
-  ggplot() +
-  geom_point(aes(x=log2FoldChange, y=-log10(padj), col=significant))
+# Modify the res variable to exclude NA values for plotting
+res_non_na <- res %>% filter(!is.na(padj))
 
-vol_plot
+# Recreate the volcano plot with detailed axis titles and informative legend
+volcano_plot <- res_non_na %>%
+  mutate(significant = padj < 0.01 & abs(log2FoldChange) > 2) %>%
+  ggplot(aes(x = log2FoldChange, y = -log10(padj), color = significant)) +
+  geom_point() +
+  scale_color_manual(values = c("FALSE" = "red", "TRUE" = "blue"),
+                     labels = c("Not Significant", "Significant (Adj P < 0.01 & |Fold Change| > 2)")) +
+  labs(x = "log2 Fold Change (Deficient vs Normal)",
+       y = "-Log10 Adjusted P (Significance)",
+       color = "Gene Significance",
+       title = "Volcano Plot of Gene Expression using Ferritin Status") +
+  theme_minimal() +
+  theme(axis.title.x = element_text(margin = margin(t = 10)), # Adjust top margin of x-axis title
+        axis.title.y = element_text(margin = margin(r = 10))) # Adjust right margin of y-axis title
+
+print(volcano_plot)
 
 # To get table of results
-sigASVs <- res %>% 
+sigASVs <- res_non_na %>% 
   filter(padj<0.05 & abs(log2FoldChange)>2) %>%
   dplyr::rename(ASV=row)
 View(sigASVs)
@@ -66,7 +79,26 @@ sigASVs <- tax_table(anemia_DESeq) %>% as.data.frame() %>%
   mutate(Genus = make.unique(Genus)) %>%
   mutate(Genus = factor(Genus, levels=unique(Genus)))
 
-ggplot(sigASVs) +
-  geom_bar(aes(x=Genus, y=log2FoldChange), stat="identity")+
-  geom_errorbar(aes(x=Genus, ymin=log2FoldChange-lfcSE, ymax=log2FoldChange+lfcSE)) +
-  theme(axis.text.x = element_text(angle=90, hjust=1, vjust=0.5))
+
+bar_plot <- ggplot(sigASVs) +
+  geom_bar(aes(x = Genus, y = log2FoldChange, fill = ifelse(log2FoldChange < 0, "Downregulated", "Upregulated")), stat = "identity") +
+  geom_errorbar(aes(x = Genus, ymin = log2FoldChange - lfcSE, ymax = log2FoldChange + lfcSE)) +
+  labs(
+    x = "Genus", 
+    y = "Log2 Fold Change", 
+    title = "Gene Expression Changes by Genus",
+    fill = "Expression Change"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 8),
+    axis.title.x = element_text(size = 10),
+    axis.title.y = element_text(size = 10),
+    plot.title = element_text(size = 14, hjust = 0.5),
+    legend.position = "right",
+    legend.text = element_text(size = 8),
+    panel.grid.major = element_blank(), # Remove major grid lines
+    panel.grid.minor = element_blank(),  # Remove minor grid lines
+  ) +
+  scale_fill_manual(values = c("Downregulated" = "red", "Upregulated" = "blue"))
+
+bar_plot
