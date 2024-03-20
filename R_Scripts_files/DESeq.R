@@ -9,10 +9,10 @@ library(vegan)
 library(dplyr)
 
 #### Load data ####
-load("anemia_rare.RData")
+load("12M_anemia_final.RData")
 # Add new column to Phyloseq Object with an infection category which classifies participants as either infected or normal
 # Access the sample data from phyloseq object
-anemia_rare_data <- sample_data(anemia_rare)
+anemia_rare_data <- sample_data(TwelveM_anemia)
 
 # Apply the condition to modify/create a new column, named 'infection_category'
 anemia_rare_data$infection_status_updated <- ifelse(anemia_rare_data$infection_status %in% c("Early Convalescence", "Late Convalescence", "Incubation"),
@@ -21,10 +21,10 @@ anemia_rare_data$infection_status_updated <- ifelse(anemia_rare_data$infection_s
                                                      "Normal", NA))
 
 # Update the sample data in your phyloseq object
-sample_data(anemia_rare) <- anemia_rare_data
+sample_data(TwelveM_anemia) <- anemia_rare_data
 
 # Now, filter the phyloseq object to include only samples where infection_status_updated is "Infected"
-anemia_rare_infected <- subset_samples(anemia_rare, infection_status_updated == "Infected")
+anemia_rare_infected <- subset_samples(TwelveM_anemia, infection_status_updated == "Infected")
 
 #### DESeq ####
 anemia_deseq <- phyloseq_to_deseq2(anemia_rare_infected, ~`adj_ferritin_status`)
@@ -63,7 +63,7 @@ print(volcano_plot)
 
 # To get table of results
 sigASVs <- res_non_na %>% 
-  filter(padj<0.05 & abs(log2FoldChange)>2) %>%
+  filter(padj<0.01 & abs(log2FoldChange)>2) %>%
   dplyr::rename(ASV=row)
 View(sigASVs)
 # Get only asv names
@@ -79,8 +79,12 @@ sigASVs <- tax_table(anemia_DESeq) %>% as.data.frame() %>%
   mutate(Genus = make.unique(Genus)) %>%
   mutate(Genus = factor(Genus, levels=unique(Genus)))
 
+# Filter out the genus labeled as "NA"
+sigASVs_filtered <- sigASVs %>%
+  filter(!is.na(Genus) & Genus != "NA")  # This removes rows where Genus is NA or "NA"
 
-bar_plot <- ggplot(sigASVs) +
+
+bar_plot <- ggplot(sigASVs_filtered) +
   geom_bar(aes(x = Genus, y = log2FoldChange, fill = ifelse(log2FoldChange < 0, "Downregulated", "Upregulated")), stat = "identity") +
   geom_errorbar(aes(x = Genus, ymin = log2FoldChange - lfcSE, ymax = log2FoldChange + lfcSE)) +
   labs(
