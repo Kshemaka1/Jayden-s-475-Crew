@@ -33,6 +33,10 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
 # Agenda
 
 ### March 20 2024 at 10:15 am
+- Review rough figures + figure legends generated so far [click here](https://docs.google.com/presentation/d/1HTzz5hGxkBD0mtDByJz26Lrisve5_Q5a4xSPshElX1I/edit?usp=sharing)
+
+
+### March 20 2024 at 10:15 am
 - Go over rough figures generated so far, based on last week's to-do list: [click here](https://docs.google.com/presentation/d/1HTzz5hGxkBD0mtDByJz26Lrisve5_Q5a4xSPshElX1I/edit?usp=sharing)
   
 ### March 13 2024 at 10:00 am 
