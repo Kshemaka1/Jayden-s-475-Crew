@@ -53,11 +53,11 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
 - [ ] **Figure 4:**
     - [ ] Inflammation vs no inflammation - flip the plot
     - [ ] Core microbiome - remove deficient and normal title spacing, expand it width-wise
-
-- [ ] **Figure 5:**
     - [ ] Annotate (???)
     - [ ] Make relative abundance plot
     - [ ] Make it less stringent?
+
+- [ ] **Figure 5:**
     - [ ] PICRUSt, run a p-adjusted and flip it
 
 - [ ] **Figure 6:**
