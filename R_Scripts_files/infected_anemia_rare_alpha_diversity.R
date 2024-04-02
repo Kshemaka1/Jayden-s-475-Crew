@@ -48,9 +48,9 @@ gg_richness_fer <- plot_richness(anemia_rare_infected, x = "adj_ferritin_status"
 
 gg_richness_fer
 
-# t.test()
-t_test_result <- t.test(samp_dat_wdiv$Shannon ~ samp_dat_wdiv$adj_ferritin_status)
-t.test(samp_dat_wdiv$Chao1 ~ samp_dat_wdiv$adj_ferritin_status)
+#Wilcoxon Rank Sum test
+wilcoxon_test_result <- wilcox.test(samp_dat_wdiv$Shannon ~ samp_dat_wdiv$adj_ferritin_status)
+wilcox.test(samp_dat_wdiv$Chao1 ~ samp_dat_wdiv$adj_ferritin_status)
 
 # plot Ferritin Status against the PD
 fer.plot.pd <- ggplot(sample_data(anemia_rare_infected), aes(adj_ferritin_status, PD)) + 
@@ -63,7 +63,7 @@ fer.plot.pd <- ggplot(sample_data(anemia_rare_infected), aes(adj_ferritin_status
 
 #### SHANNON ####
 # Extract the p-value for 'infection_status'
-p_value_fer <- t_test_result$p.value
+p_value_fer <- wilcoxon_test_result$p.value
 
 # Create a significance label based on the p-value
 signif_label_fer <- ifelse(p_value_fer < 0.05, "p < 0.05", "NS")
@@ -83,7 +83,7 @@ gg_richness_fer <- ggplot(samp_dat_wdiv, aes(x = adj_ferritin_status, y = Shanno
   expand_limits(y = c(NA, y_limit)) +
   geom_boxplot() +
   geom_point(position = position_jitter(width = 0.2), color = "black", alpha = 0.8) +
-  scale_fill_hue() +  # Use ggplot's built-in color palette
+  scale_fill_hue(labels = c("Deficient levels", "Normal levels")) +  # Use ggplot's built-in color palette
   theme_minimal() +
   theme(
     axis.text.x = element_blank(),
@@ -97,7 +97,6 @@ gg_richness_fer <- ggplot(samp_dat_wdiv, aes(x = adj_ferritin_status, y = Shanno
     x = "", 
     y = "Shannon Diversity Index",
     fill = "Adjusted Ferritin Status",
-    title = "Alpha Diversity in Infected 12-Month-Old Anemic Patients", 
     color = "Adjusted Ferritin Status"
   ) + 
   geom_text(x = x_pos_fer, y = y_pos_fer, label = signif_label_fer, size = 3.5, vjust = 0, fontface = "plain") + 
@@ -114,7 +113,7 @@ gg_diversity_fer <- fer.plot.pd
 #### CHAO1 ####
 
 # Extract the p-value for 'infection_status'
-p_value_fer <- t_test_result$p.value
+p_value_fer <- wilcoxon_test_result$p.value
 
 # Create a significance label based on the p-value
 signif_label_fer <- ifelse(p_value_fer < 0.05, "p < 0.05", "NS")
@@ -160,3 +159,36 @@ gg_richness_fer <- ggplot(samp_dat_wdiv, aes(x = adj_ferritin_status, y = Chao1,
 print(gg_richness_fer)
 # view plot
 gg_diversity_fer <- fer.plot.pd
+
+
+#### Beta diversity #####
+
+#Bray-Curtis 
+bc_dm <- distance(anemia_rare_infected, method="bray")
+# check which methods you can specify
+?distance
+
+pcoa_bc <- ordinate(anemia_rare_infected, method="PCoA", distance=bc_dm)
+
+bc_plot <- plot_ordination(anemia_rare_infected, pcoa_bc, color = "adj_ferritin_status") +
+  ggtitle("Bray-Curtis PCoA") + # Sets the title of the plot
+  labs(color = "Adjusted Ferritin Status") # Correctly sets the legend title for the color aesthetic
+
+print(bc_plot)
+
+
+#Weighted Unifrac
+wunifrac_dm <- distance(anemia_rare_infected, method="wunifrac")
+
+pcoa_wunifrac <- ordinate(anemia_rare_infected, method="PCoA", distance=wunifrac_dm)
+
+wunifrac_plot <- plot_ordination(anemia_rare_infected, pcoa_wunifrac, color = "adj_ferritin_status") +
+  ggtitle("Weighted Unifrac PCoA") + # Sets the title of the plot
+  labs(color = "Adjusted Ferritin Status") # Correctly sets the legend title for the color aesthetic
+
+print(wunifrac_plot)
+
+wilcox.test(wunifrac_dm ~ anemia_rare_data$adj_ferritin_status)
+
+
+
