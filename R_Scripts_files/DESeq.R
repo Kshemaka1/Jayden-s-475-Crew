@@ -30,8 +30,8 @@ anemia_infected <- subset_samples(TwelveM_anemia, infection_status_updated == "I
 anemia_deseq <- phyloseq_to_deseq2(anemia_infected, ~`adj_ferritin_status`)
 DESEQ_anemia <- DESeq(anemia_deseq)
 res <- results(DESEQ_anemia, tidy=TRUE, 
-               #this will ensure that normal is the reference group
-               contrast = c("adj_ferritin_status","deficient","normal"))
+               #this will ensure that deficient is the reference group
+               contrast = c("adj_ferritin_status","normal","deficient"))
 View(res)
 
 # Look at results 
@@ -51,10 +51,10 @@ volcano_plot <- res_non_na %>%
   geom_point() +
   scale_color_manual(values = c("FALSE" = "red", "TRUE" = "blue"),
                      labels = c("Not Significant", "Significant (Adj P < 0.01 & |Fold Change| > 2)")) +
-  labs(x = "log2 Fold Change (Deficient vs Normal)",
+  labs(x = "log2 Fold Change (Normal vs Deficient)",
        y = "-Log10 Adjusted P (Significance)",
        color = "Gene Significance",
-       title = "Volcano Plot of Gene Expression using Ferritin Status") +
+      ) +
   theme_minimal() +
   theme(axis.title.x = element_text(margin = margin(t = 10)), # Adjust top margin of x-axis title
         axis.title.y = element_text(margin = margin(r = 10))) # Adjust right margin of y-axis title
@@ -90,7 +90,6 @@ bar_plot <- ggplot(sigASVs_filtered) +
   labs(
     x = "Genus", 
     y = "Log2 Fold Change", 
-    title = "Gene Expression Changes by Genus",
     fill = "Expression Change"
   ) +
   theme(
