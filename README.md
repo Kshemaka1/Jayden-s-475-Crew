@@ -39,15 +39,16 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
 
 - [ ] **Figure 1:**
     - [ ] 2 panels, both alpha diversities
+    - [x] Kruskal-Wallis test for infection status
 
-- [ ] **Figure 2:**
-    - [ ] Change deficient and normal to deficient levels and normal levels
-    - [ ] Nonparametric patterns, don't do ANOVA or t-test, do Cochran's test
-    - [ ] Beta diversity
+- [x] **Figure 2:**
+    - [x] Change deficient and normal to deficient levels and normal levels
+    - [x] Nonparametric PERMANOVA
+    - [x] Beta diversity
+    - [ ] Insert actual axis line
 
 - [ ] **Figure 3:**
-    - [ ] Insert actual axis line
-    - [ ] DSeq - flip the plot
+    - [x] DSeq - flip the plot
 
 - [ ] **Figure 4:**
     - [ ] Inflammation vs no inflammation - flip the plot
