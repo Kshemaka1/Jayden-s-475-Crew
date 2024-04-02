@@ -32,6 +32,46 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
 
 # Agenda
 
+### March 27 2024 at 2:15 pm
+- Review rough figures + figure legends generated so far [click here](https://docs.google.com/presentation/d/1HTzz5hGxkBD0mtDByJz26Lrisve5_Q5a4xSPshElX1I/edit?usp=sharing)
+
+#### To-Do List
+
+- [ ] **Figure 1:**
+    - [ ] 2 panels, both alpha diversities
+
+- [ ] **Figure 2:**
+    - [ ] Change deficient and normal to deficient levels and normal levels
+    - [ ] Nonparametric patterns, don't do ANOVA or t-test, do Cochran's test
+    - [ ] Beta diversity
+
+- [ ] **Figure 3:**
+    - [ ] Insert actual axis line
+    - [ ] DSeq - flip the plot
+
+- [ ] **Figure 4:**
+    - [ ] Inflammation vs no inflammation - flip the plot
+    - [ ] Core microbiome - remove deficient and normal title spacing, expand it width-wise
+
+- [ ] **Figure 5:**
+    - [ ] Annotate (???)
+    - [ ] Make relative abundance plot
+    - [ ] Make it less stringent?
+    - [ ] PICRUSt, run a p-adjusted and flip it
+
+- [ ] **Figure 6:**
+    - [ ] Flip it so that it's normal vs deficient
+
+- [ ] **General Tasks:**
+    - [ ] Simplify research question
+    - [ ] Define convalescence in the paper
+    - [ ] Name of figure should reflect the message of the figure - don't include the methodology
+    - [ ] Define the use of ferritin 
+    - [ ] Perform enzyme analysis
+
+### March 20 2024 at 10:15 am
+- Go over rough figures generated so far, based on last week's to-do list: [click here](https://docs.google.com/presentation/d/1HTzz5hGxkBD0mtDByJz26Lrisve5_Q5a4xSPshElX1I/edit?usp=sharing)
+  
 ### March 13 2024 at 10:00 am 
 - Picrust analysis was done - go over results
 - Alpha diversity box plot for adj_ferritin_status (which had significance) was cleaned up for paper
