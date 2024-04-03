@@ -47,12 +47,19 @@ abun_samples = rownames(t(abundance_data_filtered[,-1])) #Getting a list of the 
 metadata = metadata[metadata$`#SampleID` %in% abun_samples,] #making sure the filtered metadata only includes these samples
 
 #### DESEq ####
+
+#Set 'Normal group as the reference
+
+metadata$adj_ferritin_status <- factor(metadata$adj_ferritin_status)
+metadata$adj_ferritin_status <- relevel(metadata$adj_ferritin_status, ref = "deficient")
+levels(metadata$adj_ferritin_status)
+
 #Perform pathway DAA using DESEQ2 method
 abundance_daa_results_df <- pathway_daa(abundance = abundance_data_filtered %>% column_to_rownames("#OTU ID"), 
                                         metadata = metadata, group = "adj_ferritin_status", daa_method = "DESeq2")
 
 # Annotate MetaCyc pathway so they are more descriptive
-metacyc_daa_annotated_results_df <- pathway_annotation(pathway = "MetaCyc", 
+metacyc_daa_annotated_results_df <- pathway_annotation(pathway = "EC", 
                                                        daa_results_df = abundance_daa_results_df, ko_to_kegg = FALSE)
 
 # Filter p-values to only significant ones
@@ -95,11 +102,13 @@ View(res_desc)
 
 # Filter to only include significant pathways
 sig_res = res_desc %>%
-  filter(pvalue < 0.05)
-# You can also filter by Log2fold change
+  filter(pvalue < 0.05 & abs(log2FoldChange) >= 4)
 
+# Order by log2 fold change for plotting
 sig_res <- sig_res[order(sig_res$log2FoldChange),]
-ggplot(data = sig_res, aes(y = reorder(description, sort(as.numeric(log2FoldChange))), x= log2FoldChange, fill = pvalue))+
-  geom_bar(stat = "identity")+ 
-  theme_bw()+
-  labs(x = "Log2FoldChange", y="Pathways")
+
+# Create the plot
+ggplot(data = sig_res, aes(y = reorder(description, sort(as.numeric(log2FoldChange))), x = log2FoldChange, fill = pvalue)) +
+  geom_bar(stat = "identity") + 
+  theme_bw() +
+  labs(x = "Log2FoldChange", y = "Enzymes")

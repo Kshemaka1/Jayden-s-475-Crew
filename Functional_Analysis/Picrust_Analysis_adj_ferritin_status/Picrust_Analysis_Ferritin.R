@@ -47,6 +47,13 @@ abun_samples = rownames(t(abundance_data_filtered[,-1])) #Getting a list of the 
 metadata = metadata[metadata$`#SampleID` %in% abun_samples,] #making sure the filtered metadata only includes these samples
 
 #### DESEq ####
+
+#Set 'Normal group as the reference
+
+metadata$adj_ferritin_status <- factor(metadata$adj_ferritin_status)
+metadata$adj_ferritin_status <- relevel(metadata$adj_ferritin_status, ref = "normal")
+levels(metadata$adj_ferritin_status)
+
 #Perform pathway DAA using DESEQ2 method
 abundance_daa_results_df <- pathway_daa(abundance = abundance_data_filtered %>% column_to_rownames("#OTU ID"), 
                                         metadata = metadata, group = "adj_ferritin_status", daa_method = "DESeq2")
@@ -103,3 +110,6 @@ ggplot(data = sig_res, aes(y = reorder(description, sort(as.numeric(log2FoldChan
   geom_bar(stat = "identity")+ 
   theme_bw()+
   labs(x = "Log2FoldChange", y="Pathways")
+
+
+
