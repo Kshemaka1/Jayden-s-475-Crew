@@ -45,23 +45,22 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
     - [x] Change deficient and normal to deficient levels and normal levels
     - [x] Nonparametric PERMANOVA
     - [x] Beta diversity
-    - [ ] Insert actual axis line
+    - [x] Insert actual axis line
 
 - [ ] **Figure 3:**
     - [x] DSeq - flip the plot
 
 - [ ] **Figure 4:**
-    - [ ] Inflammation vs no inflammation - flip the plot
-    - [ ] Core microbiome - remove deficient and normal title spacing, expand it width-wise
-    - [ ] Annotate (???)
-    - [ ] Make relative abundance plot
-    - [ ] Make it less stringent?
+    - [x] Inflammation vs no inflammation - flip the plot
+    - [x] Core microbiome - remove deficient and normal title spacing, expand it width-wise
+    - [x] Make relative abundance plot
+    - [x] Make it less stringent? (I made it more stringent :) )
 
 - [ ] **Figure 5:**
-    - [ ] PICRUSt, run a p-adjusted and flip it
+    - [x] PICRUSt, run a p-adjusted and flip it
 
 - [ ] **Figure 6:**
-    - [ ] Flip it so that it's normal vs deficient
+    - [x] Flip it so that it's normal vs deficient
 
 - [ ] **General Tasks:**
     - [ ] Simplify research question
