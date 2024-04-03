@@ -40,24 +40,23 @@ otu_table <- otu_table(anemia_rare_infected)
 shannon_diversity <- diversity(t(otu_table), index = "shannon")
 
 # Create a data frame for plotting
-df <- data.frame(
-  infection_status = sample_data(anemia_rare_infected)$infection_status,
-  shannon = shannon_diversity
-)
+df <- data.frame(infection_status = sample_data(anemia_rare_infected)$infection_status,
+  shannon = shannon_diversity)
 
-#ANOVA shannon vs. infection_status
+# Extract information from infected anemia patients
+alphadiv <- estimate_richness(anemia_rare_infected)
+samp_dat <- sample_data(anemia_rare_infected)
+samp_dat_wdiv <- data.frame(samp_dat, alphadiv)
 
-lm_shannon_vs_infection <- lm(Shannon ~ infection_status, data=samp_dat_wdiv)
-aov_shannon_vs_infection <- aov(lm_shannon_vs_infection)
-summary(aov_shannon_vs_infection)
+# Perform Kruskal-Wallis test
+kruskal_inf <- kruskal.test(Shannon ~ infection_status, data=samp_dat_wdiv)
 
-# Access the ANOVA summary
-anova_summary <- summary(aov_shannon_vs_infection)
-
+# Access the Kruskal-Wallis test summary
+kruskal_summary <- summary(kruskal_inf)
 
 #### Making Plot of Alpha Diversity for Infection Status ####
-# Extract the p-value for 'infection_status'
-p_value <- anova_summary[[1]]$"Pr(>F)"[1]
+# Extract the p-value for 'infection_status' from the Kruskal-Wallis test
+p_value <- kruskal_inf$p.value
 
 # Create a significance label based on the p-value
 signif_label <- ifelse(p_value < 0.05, "p < 0.05", "NS")
@@ -73,9 +72,16 @@ y_limit <- max(samp_dat_wdiv$Shannon, na.rm = TRUE) + buffer_amount
 color_blind_friendly_colors <- c("Early Convalescence" = "#E69F00", 
                                  "Late Convalescence" = "#009E73",
                                  "Incubation" = "#56B4E9")
+# Add tails to the whiskers of the box plot - calculating the min and max for each group 
+samp_dat_wdiv_summary <- samp_dat_wdiv %>%
+  group_by(infection_status) %>%
+  summarise(
+    ymin = min(Shannon, na.rm = TRUE),
+    ymax = max(Shannon, na.rm = TRUE)
+  ) 
 
 # Plot
-gg_richness_inf <- ggplot(df, aes(x = infection_status, y = shannon, fill = infection_status)) +
+gg_richness_inf <- ggplot(samp_dat_wdiv, aes(x = infection_status, y = Shannon, fill = infection_status)) +
   expand_limits(y = c(NA, y_limit)) +
   geom_boxplot() +
   geom_point(position = position_jitter(width = 0.2), color = "black", alpha = 0.8) +
@@ -103,10 +109,20 @@ gg_richness_inf <- ggplot(df, aes(x = infection_status, y = shannon, fill = infe
   ) + 
   geom_text(x = x_pos_inf, y = y_pos_inf, label = signif_label, size = 3.5, vjust = 0, fontface = "plain") +
   geom_segment(x = 1, xend = 3, y = y_pos_inf - 0.05, yend = y_pos_inf - 0.05, color = "black") + # Horizontal line
-  geom_segment(x = 1, xend = 1, y = y_pos_inf - 0.05, yend = y_pos_inf - 0.08, color = "black") + # Left vertical line
-  geom_segment(x = 4, xend = 4, y = y_pos_inf - 0.05, yend = y_pos_inf - 0.08, color = "black") # Right vertical line
+  geom_segment(x = 1, xend = 1, y = y_pos_inf - 0.05, yend = y_pos_inf - 0.05, color = "black") + # Left vertical line
+  geom_segment(x = 3, xend = 3, y = y_pos_inf - 0.05, yend = y_pos_inf - 0.05, color = "black") # Right vertical line
+
+
+
+# Add error bars to your plot
+gg_richness_inf <- gg_richness_inf +
+  geom_errorbar(
+    data = samp_dat_wdiv_summary, 
+    aes(x = infection_status, ymin = ymin, ymax = ymax),
+    width = 0.2, 
+    inherit.aes = FALSE  # Prevent inheritance of aesthetics from the main ggplot call
+  )
 
 # Print the plot to view it
-gg_richness_inf
-
+print(gg_richness_inf)
 

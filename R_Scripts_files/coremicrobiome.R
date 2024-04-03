@@ -44,17 +44,37 @@ tax_table()
 tax_table(prune_taxa(def_ASVs,anemia_infected))
 
 # ASVs' relative abundance
-bar_plot <- prune_taxa(def_ASVs,anemia_RA) %>% 
+bar_plot <- prune_taxa(def_ASVs,anemia_RA) %>%
   plot_bar(fill="Genus") + 
-  facet_wrap(.~`adj_ferritin_status`, scales ="free")
+  facet_wrap(~factor(`adj_ferritin_status`, levels = c("normal", "deficient")), scales = "free_x", ncol = 2) + 
+  labs(y = "Relative Abundance", x = "") + # Rename Y-axis and remove X-axis title
+  theme_minimal() + # Use a minimal theme
+  theme(
+    axis.text.x = element_blank(), # Remove X-axis labels
+    axis.ticks.x = element_blank(), # Remove X-axis ticks
+    strip.text.x = element_text(size = 12, face = "bold"), # Capitalize and bold the facet label text
+    axis.title.x = element_blank(), # Remove the x-axis title
+    panel.grid.major = element_blank(), # Remove major grid lines
+    panel.grid.minor = element_blank(), # Remove minor grid lines
+    panel.border = element_rect(colour = "black", fill=NA, size= 0.5) # Add border around each panel
+  )
+
+# Manually adjust the case of the facet labels
+bar_plot <- bar_plot + scale_x_discrete(labels = function(x) stringr::str_to_title(x))
+
+# Print the plot
+print(bar_plot)
+
 
 ### Venn diagram of all the ASVs that showed up in each treatment
-norm_list <- core_members(anemia_norm, detection=0, prevalence = 0.7)
-def_list <- core_members(anemia_def, detection=0, prevalence = 0.7)
+norm_list <- core_members(anemia_norm, detection=0.01, prevalence = 0.9)
+def_list <- core_members(anemia_def, detection=0.01, prevalence = 0.9)
 
-list_full <- list(Normal = norm_list, Deficient = def_list)
+list_full <- list("Normal     "= norm_list, "Deficient     " = def_list)
 
 # Create a Venn diagram using all the ASVs shared and unique to normal and deficient ferritin status
 stat_venn <- ggVennDiagram(x = list_full)
 # expand axis to show long set labels
 stat_venn_f <-  stat_venn + scale_x_continuous(expand = expansion(mult = .2))
+
+stat_venn_f
