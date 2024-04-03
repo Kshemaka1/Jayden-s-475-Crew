@@ -78,82 +78,55 @@ y_pos_fer <- max(samp_dat_wdiv$Shannon) + 0.2
 buffer_amount <- (max(samp_dat_wdiv$Shannon, na.rm = TRUE) - min(samp_dat_wdiv$Shannon, na.rm = TRUE)) * 0.1
 y_limit <- max(samp_dat_wdiv$Shannon, na.rm = TRUE) + buffer_amount
 
-# Plot richness for adjusted ferritin status
+# Add tails to the whiskers of the box plot - calculating the min and max for each group 
+samp_dat_wdiv_summary <- samp_dat_wdiv %>%
+  group_by(adj_ferritin_status) %>%
+  summarise(
+    ymin = min(Shannon, na.rm = TRUE),
+    ymax = max(Shannon, na.rm = TRUE)
+  ) 
+
+# Plot
 gg_richness_fer <- ggplot(samp_dat_wdiv, aes(x = adj_ferritin_status, y = Shannon, fill = adj_ferritin_status)) +
   expand_limits(y = c(NA, y_limit)) +
   geom_boxplot() +
   geom_point(position = position_jitter(width = 0.2), color = "black", alpha = 0.8) +
-  scale_fill_hue(labels = c("Deficient levels", "Normal levels")) +  # Use ggplot's built-in color palette
+  scale_fill_hue(labels = c("Deficient levels", "Normal levels")) + 
   theme_minimal() +
   theme(
-    axis.text.x = element_blank(),
-    axis.ticks.x = element_blank(),
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.border = element_rect(colour = "black", fill=NA, size=0.5),
-    axis.ticks = element_line(color = "black")
+    legend.position = "right",
+    legend.background = element_blank(),
+    legend.box.background = element_rect(color="black"),
+    axis.text.x = element_blank(), # This will remove the x-axis labels
+    axis.ticks.x = element_blank(), # This will remove the x-axis ticks
+    panel.grid.major = element_blank(), # Remove major grid lines
+    panel.grid.minor = element_blank(),  # Remove minor grid lines
+    panel.border = element_rect(colour = "black", fill=NA, size=0.5), # Add border around the plot
+    axis.ticks = element_line(color = "black"), # Add ticks on y-axis
+    legend.key.size = unit(1.5, "lines") # Adjust the size of legend keys
   ) +
+  guides(fill = guide_legend(override.aes = list(color = NA))) + # Remove color guide from legend
   labs(
     x = "", 
-    y = "Shannon Diversity Index",
-    fill = "Adjusted Ferritin Status",
-    color = "Adjusted Ferritin Status"
-  ) + 
+    y = "Shannon Diversity Index", 
+    fill = "Adjusted Ferritin Status", 
+    title = "", 
+    color = "Adjusted Ferritin Status" ) + 
   geom_text(x = x_pos_fer, y = y_pos_fer, label = signif_label_fer, size = 3.5, vjust = 0, fontface = "plain") + 
   geom_segment(x = 1, xend = 2, y = y_pos_fer - 0.05, yend = y_pos_fer - 0.05, color = "black") +
   geom_segment(x = 1, xend = 1, y = y_pos_fer - 0.05, yend = y_pos_fer - 0.08, color = "black") +
   geom_segment(x = 2, xend = 2, y = y_pos_fer - 0.05, yend = y_pos_fer - 0.08, color = "black")
 
-# Print the plot to view it
-print(gg_richness_fer)
-# view plot
-gg_diversity_fer <- fer.plot.pd
 
 
-#### CHAO1 ####
-
-# Extract the p-value for 'infection_status'
-p_value_fer <- wilcoxon_test_result$p.value
-
-# Create a significance label based on the p-value
-signif_label_fer <- ifelse(p_value_fer < 0.05, "p < 0.05", "NS")
-
-# Calculate x_pos for the plot with two categories
-x_pos_fer <- 1.5  
-
-# Since there are only two categories, adjust y_pos accordingly
-y_pos_fer <- max(samp_dat_wdiv$Chao1) + 0.2
-
-# Add a buffer on top of the maximum y-value for the y-axis limit
-buffer_amount <- (max(samp_dat_wdiv$Chao1, na.rm = TRUE) - min(samp_dat_wdiv$Chao1, na.rm = TRUE)) * 0.1
-y_limit <- max(samp_dat_wdiv$Chao1, na.rm = TRUE) + buffer_amount
-
-# Plot richness for adjusted ferritin status
-gg_richness_fer <- ggplot(samp_dat_wdiv, aes(x = adj_ferritin_status, y = Chao1, fill = adj_ferritin_status)) +
-  expand_limits(y = c(NA, y_limit)) +
-  geom_boxplot() +
-  geom_point(position = position_jitter(width = 0.2), color = "black", alpha = 0.8) +
-  scale_fill_hue() +  # Use ggplot's built-in color palette
-  theme_minimal() +
-  theme(
-    axis.text.x = element_blank(),
-    axis.ticks.x = element_blank(),
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.border = element_rect(colour = "black", fill=NA, size=0.5),
-    axis.ticks = element_line(color = "black")
-  ) +
-  labs(
-    x = "", 
-    y = "CHAO1 Index",
-    fill = "Adjusted Ferritin Status",
-    title = "Alpha Diversity in Infected 12-Month-Old Anemic Patients", 
-    color = "Adjusted Ferritin Status"
-  ) + 
-  geom_text(x = x_pos_fer, y = y_pos_fer, label = signif_label_fer, size = 3.5, vjust = 0, fontface = "plain") + 
-  geom_segment(x = 1, xend = 2, y = y_pos_fer - 0.05, yend = y_pos_fer - 0.05, color = "black") +
-  geom_segment(x = 1, xend = 1, y = y_pos_fer - 0.05, yend = y_pos_fer - 0.08, color = "black") +
-  geom_segment(x = 2, xend = 2, y = y_pos_fer - 0.05, yend = y_pos_fer - 0.08, color = "black")
+# Add error bars to plot
+gg_richness_fer <- gg_richness_fer +
+  geom_errorbar(
+    data = samp_dat_wdiv_summary, 
+    aes(x = adj_ferritin_status, ymin = ymin, ymax = ymax),
+    width = 0.2, 
+    inherit.aes = FALSE  # Prevent inheritance of aesthetics from the main ggplot call
+  )
 
 # Print the plot to view it
 print(gg_richness_fer)

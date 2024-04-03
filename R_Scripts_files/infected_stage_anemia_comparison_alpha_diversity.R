@@ -114,7 +114,7 @@ gg_richness_inf <- ggplot(samp_dat_wdiv, aes(x = infection_status, y = Shannon, 
 
 
 
-# Add error bars to your plot
+# Add error bars to plot
 gg_richness_inf <- gg_richness_inf +
   geom_errorbar(
     data = samp_dat_wdiv_summary, 
