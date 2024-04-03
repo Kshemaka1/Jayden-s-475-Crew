@@ -37,7 +37,7 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
 
 #### To-Do List
 
-- [ ] **Figure 1:**
+- [x] **Figure 1:**
     - [ ] 2 panels, both alpha diversities
     - [x] Kruskal-Wallis test for infection status
 
@@ -47,27 +47,27 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
     - [x] Beta diversity
     - [x] Insert actual axis line
 
-- [ ] **Figure 3:**
+- [x] **Figure 3:**
     - [x] DSeq - flip the plot
 
-- [ ] **Figure 4:**
+- [x] **Figure 4:**
     - [x] Inflammation vs no inflammation - flip the plot
     - [x] Core microbiome - remove deficient and normal title spacing, expand it width-wise
     - [x] Make relative abundance plot
     - [x] Make it less stringent? (I made it more stringent :) )
 
-- [ ] **Figure 5:**
+- [x] **Figure 5:**
     - [x] PICRUSt, run a p-adjusted and flip it
 
-- [ ] **Figure 6:**
+- [x] **Figure 6:**
     - [x] Flip it so that it's normal vs deficient
 
 - [ ] **General Tasks:**
-    - [ ] Simplify research question
+    - [x] Simplify research question
     - [ ] Define convalescence in the paper
-    - [ ] Name of figure should reflect the message of the figure - don't include the methodology
+    - [x] Name of figure should reflect the message of the figure - don't include the methodology
     - [ ] Define the use of ferritin 
-    - [ ] Perform enzyme analysis
+    - [x] Perform enzyme analysis
 
 ### March 20 2024 at 10:15 am
 - Go over rough figures generated so far, based on last week's to-do list: [click here](https://docs.google.com/presentation/d/1HTzz5hGxkBD0mtDByJz26Lrisve5_Q5a4xSPshElX1I/edit?usp=sharing)
