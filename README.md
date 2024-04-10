@@ -31,6 +31,11 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
 - Aim 6: Development of Predictive Models: Use identified metabolic markers from anemic children, segmented by infection status, to create predictive models for microbial richness/abundance and potential inflammatory species presence.
 
 # Agenda
+### April 10 2024 at 2:15 pm
+- Feedback on findings we have? Is there anything we should change?
+- Link to PowerPoint presented yesterday: [click here](https://docs.google.com/presentation/d/1Q_2NYI6iRwREKwRISHyYghypWVwosHUD0IXKSO5o_mE/edit?usp=sharing) 
+- Link to PowerPoint for figure legends: [click here](https://docs.google.com/presentation/d/1pByYQWFRNFOrJn38CuKmhb83aN2tUKvIWd6hFwwidwE/edit?usp=sharing)   
+- Our brains are tired
 
 ### April 3 2024 at 2:15 pm
 - Review edited figures and figure descriptions [click here](https://docs.google.com/presentation/d/1pByYQWFRNFOrJn38CuKmhb83aN2tUKvIWd6hFwwidwE/edit#slide=id.g2c8ec61cf98_0_172)
