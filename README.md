@@ -319,4 +319,4 @@ To conduct richness and diversity analyses on the various indicators for metabol
     
 **R-Script for diversity is here**: `Phyloseq_Files/alpha_diversity.r`
 
- **More analyses to come when we have a greater will to live...**
+ **The rest of the lab notebook is under construction and will be published by April 21st**
