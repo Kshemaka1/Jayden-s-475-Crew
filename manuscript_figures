@@ -1,8 +1,1 @@
-$ git add Team12_Figure1_475_23WT2..png
-$ git add Team12_Figure2_475_23WT2..png
-$ git add Team12_Figure3_475_23WT2..png
-$ git add Team12_Figure4_475_23WT2..png
-$ git add Team12_Figure5_475_23WT2..png
-$ git commit -m "first commit"
-$ git remote add origin https://https://github.com/Kshemaka1/Team-12-Jaydens-475-Crew.git
-$ git push -u origin master
+
