@@ -51,7 +51,7 @@ volcano_plot <- res_non_na %>%
   geom_point() +
   scale_color_manual(values = c("FALSE" = "red", "TRUE" = "blue"),
                      labels = c("Not Significant", "Significant (Adj P < 0.01 & |Fold Change| > 2)")) +
-  labs(x = "log2 Fold Change (Normal vs Deficient)",
+  labs(x = "log2 Fold Change (High vs Low Inflammation)",
        y = "-Log10 Adjusted P (Significance)",
        color = "Gene Significance",
       ) +
@@ -102,6 +102,6 @@ bar_plot <- ggplot(sigASVs_filtered) +
     panel.grid.major = element_blank(), # Remove major grid lines
     panel.grid.minor = element_blank(),  # Remove minor grid lines
   ) +
-  scale_fill_manual(values = c("Downregulated" = "red", "Upregulated" = "blue"))
+  scale_fill_manual(values = c("Downregulated" = "orange", "Upregulated" = "forestgreen"))
 
 bar_plot

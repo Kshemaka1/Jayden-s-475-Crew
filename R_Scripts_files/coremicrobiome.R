@@ -67,8 +67,8 @@ print(bar_plot)
 
 
 ### Venn diagram of all the ASVs that showed up in each treatment
-norm_list <- core_members(anemia_norm, detection=0.01, prevalence = 0.9)
-def_list <- core_members(anemia_def, detection=0.01, prevalence = 0.9)
+norm_list <- core_members(anemia_norm, detection=0.0, prevalence = 0.7)
+def_list <- core_members(anemia_def, detection=0.0, prevalence = 0.7)
 
 list_full <- list("Normal     "= norm_list, "Deficient     " = def_list)
 
@@ -78,3 +78,36 @@ stat_venn <- ggVennDiagram(x = list_full)
 stat_venn_f <-  stat_venn + scale_x_continuous(expand = expansion(mult = .2))
 
 stat_venn_f
+
+####Get the taxa that are unique to the normal group####
+# Get the ASVs that are unique to the normal group
+unique_norm_ASVs <- setdiff(norm_list, def_list)
+# Get the taxonomic names for these unique ASVs
+unique_norm_taxa <- tax_table(prune_taxa(unique_norm_ASVs, anemia_infected))
+
+####Get the taxa that are unique to the deficient group####
+# Get the ASVs that are unique to the deficient group
+unique_def_ASVs <- setdiff(def_list, norm_list)
+# Get the taxonomic names for these unique ASVs
+unique_def_taxa <- tax_table(prune_taxa(unique_def_ASVs, anemia_infected))
+
+####Get the taxa that are overlapping between the normal and deficient groups####
+# Get the ASVs that are in both normal and deficient groups
+common_ASVs <- intersect(norm_list, def_list)
+# Get the taxonomic names for these overlapping ASVs
+common_taxa <- tax_table(prune_taxa(common_ASVs, anemia_infected))
+
+# Convert the tax_table to a data frame for easier manipulation and visualization
+unique_norm_df <- as.data.frame(unique_norm_taxa)
+unique_def_df <- as.data.frame(unique_def_taxa)
+common_taxa_df <- as.data.frame(common_taxa)
+
+# Add a column to indicate the group each taxon belongs to
+unique_norm_df$Group <- "Unique High Inflammation"
+unique_def_df$Group <- "Unique Low Inflammation"
+common_taxa_df$Group <- "Common"
+
+# Combine all the data into one data frame
+all_taxa_df <- rbind(unique_def_df, common_taxa_df, unique_norm_df)
+
+all_taxa_df

@@ -91,7 +91,7 @@ gg_richness_fer <- ggplot(samp_dat_wdiv, aes(x = adj_ferritin_status, y = Shanno
   expand_limits(y = c(NA, y_limit)) +
   geom_boxplot() +
   geom_point(position = position_jitter(width = 0.2), color = "black", alpha = 0.8) +
-  scale_fill_hue(labels = c("Deficient levels", "Normal levels")) + 
+  scale_fill_hue(labels = c("Low Inflammation", "High Inflammation")) + 
   theme_minimal() +
   theme(
     legend.position = "right",
@@ -109,9 +109,9 @@ gg_richness_fer <- ggplot(samp_dat_wdiv, aes(x = adj_ferritin_status, y = Shanno
   labs(
     x = "", 
     y = "Shannon Diversity Index", 
-    fill = "Adjusted Ferritin Status", 
+    fill = "Inflammation Level", 
     title = "", 
-    color = "Adjusted Ferritin Status" ) + 
+    color = "Inflammation Level" ) + 
   geom_text(x = x_pos_fer, y = y_pos_fer, label = signif_label_fer, size = 3.5, vjust = 0, fontface = "plain") + 
   geom_segment(x = 1, xend = 2, y = y_pos_fer - 0.05, yend = y_pos_fer - 0.05, color = "black") +
   geom_segment(x = 1, xend = 1, y = y_pos_fer - 0.05, yend = y_pos_fer - 0.08, color = "black") +
