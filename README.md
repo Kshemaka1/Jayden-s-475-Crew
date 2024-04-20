@@ -330,9 +330,10 @@ To conduct richness and diversity analyses on the various indicators for metabol
 - Due to the lack of alpha diversity between each infection status (Incubation, early convalescence, and late convalescence), we can group all infection stages into one “Infected” category for the beta diversity analysis.
 - Since adj_ferritin status had a significant difference, perhaps we can focus on it instead, and now, instead of looking at metabolic markers, we can look at inflammation with ferritin as a marker of this. To do this, ferritin levels (adj_ferritin_status) can be reclassified, with normal levels classified as high inflammation and deficient levels classified as low inflammation. 
 
-## P008: Alpha Diversity Analyses for Infected Students
-** Date: March 1st **
-## Purpose: To group anemic samples into those who are only infected and redo Shannon alpha diversity analysis (and conduct beta diversity analysis) on adjusted ferritin status. 
+## P008: Alpha and Beta Diversity Analyses for Infected Students
+**Date: March 1st**
+### Purpose: 
+To group anemic samples into those who are only infected and redo Shannon alpha diversity analysis (and conduct beta diversity analysis) on adjusted ferritin status. 
 
 ### Procedure
 **Loading and Preparing Data**
