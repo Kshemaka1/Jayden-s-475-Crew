@@ -338,7 +338,8 @@ To conduct richness and diversity analyses on the various indicators for metabol
 To group anemic samples into those who are only infected and redo Shannon alpha diversity analysis (and conduct beta diversity analysis) on adjusted ferritin status. 
 
 ### Procedure
-Script for parts A-C found [here](R_Scripts_files/infected_anemia_rare_alpha_diversity.R)
+- Script for parts A-C found [here](R_Scripts_files/infected_anemia_rare_alpha_diversity.R)
+
 **A. Loading and Preparing Data**
 1. **Load Data**: Begin by loading the dataset from "anemia_rare.RData".
 2. **Modify Sample Data**:
