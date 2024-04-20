@@ -374,9 +374,12 @@ To group anemic samples into those who are only infected and redo Shannon alpha 
   Surprisingly, adjusted ferritin status showed no significant difference in Alpha diversity in only Infected Patients.
   ![image of Shannon Diversity Adj Ferritin_Infected](R_Scripts_files/Alpha_Diversity_Plots/adj_ferritin_status/Infected_Anemic_Shannon_Ferritin_plot.png) 
   
-- Beta Diversity (all plots can be found [here](R_Scripts_files/beta_diversity/Beta_Diversity_Plots):
-  Weighted Unifrac analysis and a resulting PCoA plot demonstrated that there was no significant difference between low and high inflammation anemic infants
+- Beta Diversity - all plots can be found [here](R_Scripts_files/beta_diversity/Beta_Diversity_Plots):
+  Weighted Unifrac analysis and a resulting PCoA plot demonstrated that there was no significant difference between low and high inflammation anemic infants (no significance detected)
   Weighted Unifrac PCoA Plot:
 ![image of PcOA Plot](R_Scripts_files/beta_diversity/Beta_Diversity_Plots/Weighted_Unifrac_PCoA.png)
 
-With special collaboration through Hochschule Osnabrück
+With special collaboration from Hochschule Osnabrück
+
+**Discussion**
+The absence of a significant difference, which contradicts results from P007, that demonstrated an association between inflammation and alterations in the gut microbiota, is intriguing. This discrepancy could be due to the gut microbiome's functional redundancy, where various microbes might perform similar functions to preserve stability amid pathophysiological changes. Another factor could be the lack of detailed information on the type of infection affecting anemic infants, as this is not clearly specified in the metadata, limiting the conclusions that can be drawn from the non-significant results. Moreover, the small number of anemic infants in the incubation stage of infection (n = 2) restricts the generalizability and representativeness of the findings.
