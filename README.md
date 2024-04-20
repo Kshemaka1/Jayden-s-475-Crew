@@ -297,9 +297,9 @@ To conduct richness and diversity analyses on the various indicators for metabol
   - Visualized richness of microbial communities using a richness plot generated with the `plot_richness()` function.
   - Generated richness plot with additional alpha diversity metrics, including Shannon diversity and Chao1 estimator.
   - Customized a richness plot to include the adjusted body iron storage as a factor, using the `adj_bis_status` variable.
-  - Saved the customized richness plot as an image file named "plot_richness.png" in: `Phyloseq_Files/Alpha_Diversity_Plots/Adj_bis_status/plot_richness.png`.
+  - Saved the customized richness plot as an image file named "plot_richness.png" in: `R_Scripts_files/Alpha_Diversity_Plots/adj_bis_status/plot_richness.png`.
     
-![image of plot_richness](R_Scripts_files/Alpha_Diversity_Plots/Adj_bis_status/plot_richness.png)
+![image of plot_richness](R_Scripts_files/Alpha_Diversity_Plots/adj_bis_status/plot_richness.png)
 
 - **Estimated Richness:**
   - Estimated the richness of microbial communities using the rarefied data.
