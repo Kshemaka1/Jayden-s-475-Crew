@@ -372,4 +372,4 @@ To group anemic samples into those who are only infected and redo Shannon alpha 
 
 - Alpha Diversity
 - Beta Diversity:
-![image of PcOA Plot](R_Scripts_files/beta_diversity/Weighted Unifrac PCoA.png)
+![image of PcOA Plot](R_Scripts_files/beta_diversity/Beta_Diversity_Plots/Weighted_Unifrac_PCoA.png)
