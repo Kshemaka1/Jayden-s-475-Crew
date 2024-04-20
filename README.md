@@ -292,7 +292,7 @@ To conduct richness and diversity analyses on the various indicators for metabol
                  - this is the file we'll be focusing on
 
 ### Alpha Diversity Analysis
-- **Performed Alpha Diversity Analysis:**
+1. **Performed Alpha Diversity Analysis:**
   - Calculated and visualized alpha diversity metrics using the 12M_anemia_final.RData.
   - Visualized richness of microbial communities using a richness plot generated with the `plot_richness()` function.
   - Generated richness plot with additional alpha diversity metrics, including Shannon diversity and Chao1 estimator.
@@ -300,13 +300,12 @@ To conduct richness and diversity analyses on the various indicators for metabol
   - Saved the customized richness plot as an image file named "plot_richness.png" in: `R_Scripts_files/Alpha_Diversity_Plots/adj_bis_status/plot_richness.png`.
     
 ![image of plot_richness](R_Scripts_files/Alpha_Diversity_Plots/adj_bis_status/plot_richness.png)
-
-- **Estimated Richness:**
+ - **Estimated Richness:**
   - Estimated the richness of microbial communities using the rarefied data.
   - This estimation provides insights into the total number of different microbial taxa present in the samples.
 
 ### Phylogenetic Diversity Analysis
-- **Calculated Phylogenetic Diversity:**
+2. **Calculated Phylogenetic Diversity:**
   - Computed Faith's phylogenetic diversity (PD) using the rarefied data and the associated phylogenetic tree.
   - Calculated phylogenetic distances among samples using the `pd()` function.
   - Added PD values to the sample metadata table under the column named "PD".
@@ -316,7 +315,8 @@ To conduct richness and diversity analyses on the various indicators for metabol
   - Customized the plot with appropriate axis labels.
   - Saved the customized plot of phylogenetic diversity against adjusted body iron storage as an image file named "phylogeny_plot(Faith's).png" in : `R_Scripts_files/Alpha_Diversity_Plots/adj_bis_status/phylogeny_plot(Faith's).png`.
     ![image of phylogeny_plot](R_Scripts_files/Alpha_Diversity_Plots/adj_bis_status/phylogeny_plot(Faith's).png)
-    
+3. Repeated the same process (steps 1 and 2) for `adj_bis_status`, `adj_ferritin_status`, `adj_rbp_status` , and `crp_status` --> plots can be found in: `R_Scripts_files/Alpha_Diversity_Plots`
+
 **R-Script for diversity is here**: `R_Scripts_files/alpha_diversity_Rscript.r`
 
  **The rest of the lab notebook is under construction and will be published by April 21st**
