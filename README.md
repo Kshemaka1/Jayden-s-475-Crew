@@ -324,6 +324,7 @@ To conduct richness and diversity analyses on the various indicators for metabol
 
 ### Results:
 - No significant difference in alpha diversity found within any of the metabolic indicators and in infection status **EXCEPT** for `adj_ferritin_status` (p value = 0.03724) - found [here](R_Scripts_files/Alpha_Diversity_Plots/adj_ferritin_status/adj_ferritin_status_t_test_richness.png)
+  ![image of Ferritin Status Alpha Diversity Plot ](R_Scripts_files/Alpha_Diversity_Plots/adj_ferritin_status/Shannon_Diversity.png)
 
 ### Moving forward:
 - Due to the lack of alpha diversity between each infection status (Incubation, early convalescence, and late convalescence), we can group all infection stages into one “Infected” category for the beta diversity analysis.
