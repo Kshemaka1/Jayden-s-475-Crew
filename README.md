@@ -367,7 +367,7 @@ To group anemic samples into those who are only infected and redo Shannon alpha 
 2. **Principal Coordinates Analysis (PCoA)**:
    - Perform PCoA for both Bray-Curtis and Weighted Unifrac distances.
 3. **Visualization**:
-   - Plot the ordination results to visualize the beta diversity, and coloring points by adjusting ferritin status to examine patterns.
+   - Plot the ordination results to visualize the beta diversity, and coloring points by adjusted ferritin status to examine patterns.
    - Utilize titles and labels to delineate different analyses and results.
 4. **Statistical Testing**:
    - Conduct Wilcoxon tests on the distance matrices to assess differences in microbial community composition related to ferritin status.
@@ -378,10 +378,10 @@ To group anemic samples into those who are only infected and redo Shannon alpha 
   Surprisingly, adjusted ferritin status showed no significant difference in Alpha diversity in only Infected Patients.
   ![image of Shannon Diversity Adj Ferritin_Infected](R_Scripts_files/Alpha_Diversity_Plots/adj_ferritin_status/Infected_Anemic_Shannon_Ferritin_plot.png) 
   
-- Beta Diversity - all plots can be found [here](R_Scripts_files/beta_diversity/Beta_Diversity_Plots):
+- Beta Diversity - all plots can be found [here](R_Scripts_files/Beta_Diversity_Plots):
   Weighted Unifrac analysis and a resulting PCoA plot demonstrated that there was no significant difference between low and high inflammation anemic infants (no significance detected)
   - Weighted Unifrac PCoA Plot:
-![image of PcOA Plot](R_Scripts_files/beta_diversity/Beta_Diversity_Plots/Weighted_Unifrac_PCoA.png)
+![image of PcOA Plot](R_Scripts_files/Beta_Diversity_Plots/Weighted_Unifrac_PCoA.png)
 
 With special collaboration from Hochschule Osnabrück
 
