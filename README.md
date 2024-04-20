@@ -318,8 +318,13 @@ To conduct richness and diversity analyses on the various indicators for metabol
   - Customized the plot with appropriate axis labels.
   - Saved the customized plot of phylogenetic diversity against adjusted body iron storage as an image file named "phylogeny_plot(Faith's).png" in : `R_Scripts_files/Alpha_Diversity_Plots/adj_bis_status/phylogeny_plot(Faith's).png`.
     ![image of phylogeny_plot](R_Scripts_files/Alpha_Diversity_Plots/adj_bis_status/phylogeny_plot(Faith's).png)
-3. Repeated the same process (steps 1 and 2) for `adj_bis_status`, `adj_ferritin_status`, `adj_rbp_status` , and `crp_status` --> plots can be found in: `R_Scripts_files/Alpha_Diversity_Plots`
+3. Repeated the same process (steps 1 and 2) for `adj_bis_status`, `adj_ferritin_status`, `adj_rbp_status`, `infection_status` , and `crp_status` --> plots can be found in: `R_Scripts_files/Alpha_Diversity_Plots`
 
 **R-Script for diversity is here**: `R_Scripts_files/alpha_diversity_Rscript.r`
 
- **The rest of the lab notebook is under construction and will be published by April 21st**
+### Results:
+- No significant difference in alpha diversity found within any of the metabolic indicators and in infection status **EXCEPT** for `adj_ferritin_status` (p value = 0.03724) - found [here](R_Scripts_files/Alpha_Diversity_Plots/adj_ferritin_status/adj_ferritin_status_t_test_richness.png)
+
+### Moving forward:
+- Due to the lack of alpha diversity between each infection status (Incubation, early convalescence, and late convalescence), we can group all infection stages into one “Infected” category for the beta diversity analysis.
+- Since adj_ferritin status had a significant difference, perhaps we can focus on it instead, and now, instead of looking at metabolic markers, we can look at inflammation with ferritin as a marker of this. To do this, ferritin levels (adj_ferritin_status) can be reclassified, with normal levels classified as high inflammation and deficient levels classified as low inflammation. 
