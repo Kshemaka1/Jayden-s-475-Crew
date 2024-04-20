@@ -1,11 +1,14 @@
 # MICB 475 Team 12: Lab Notebook and Meeting Agenda
-This repository stores all the scripts and documentation related to our team's project!
+This repository contains files related to our project and a lab notebook showing the journey we took in reaching our conclusions. 
 
 ## [The All-Star Team](https://t.ly/wiPSh)
 <img src="/team-pic.png" alt="The Team Behind the Magic" width="400" height="400">
 
 ## Summary
-This project explores the complex effects of anemia on systemic metabolism and microbial functions, using four main metabolic indicators: **Adjusted Body Iron Storage (BIS) Status** (`adj_bis_status`), **Adjusted Ferritin Status** (`adj_ferritin_status`), **Adjusted Retinol Binding Protein (RBP) Status** (`adj_rbp_status`), and **C Reactive Protein (CRP) Status** (`crp_status`). These indicators provide insights into iron metabolism, vitamin A transport, protein synthesis, and metabolic syndrome.
+Iron is an essential micronutrient critical for human growth, cell function, and oxygen transport. Despite its importance, iron deficiency remains a global health issue, particularly in developing countries, leading to conditions such as iron deficiency anemia (IDA). IDA affects about 16% of the world population, especially women and young children, and results from insufficient iron intake and storage. Recent research highlights the role of ferritin, a primary iron storage protein, as an indicator of inflammation, which is influenced by gut microbiome dysbiosis. Studies have shown that gut dysbiosis can impact iron absorption and utilization, contributing to anemia. Conversely, beneficial bacteria like Lactobacillus and Bifidobacterium might enhance iron utilization, suggesting the gut microbiome's potential role in mitigating IDA. Our study focuses on the intricate relationships between anemia, systemic inflammation, and the gut microbiome. We aim to use adjusted ferritin levels to measure inflammation, providing a more accurate assessment of iron status and inflammation in patients. This project seeks to understand how inflammation in anemic infants can alter gut microbial composition and trigger cellular stress responses, offering insights into the systemic effects of anemia and identifying potential microbial targets for therapy. 
+
+**Please note** that, **until** the entry on March XX, we were focusing on looking at four metabolic markers (**Adjusted Body Iron Storage (BIS) Status** (`adj_bis_status`), **Adjusted Ferritin Status** (`adj_ferritin_status`), **Adjusted Retinol Binding Protein (RBP) Status** (`adj_rbp_status`), and **C Reactive Protein (CRP) Status** (`crp_status`)) and how they changed in relation to infection status within the dataset. It is only from March XX that we started focusing on using Ferritin and examining inflammation levels: 
+
 
 All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_processing_script)
 
