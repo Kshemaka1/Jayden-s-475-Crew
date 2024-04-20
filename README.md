@@ -310,12 +310,12 @@ To conduct richness and diversity analyses on the various indicators for metabol
   - Computed Faith's phylogenetic diversity (PD) using the rarefied data and the associated phylogenetic tree.
   - Calculated phylogenetic distances among samples using the `pd()` function.
   - Added PD values to the sample metadata table under the column named "PD".
-![image of phylogeny_plot](R_Scripts_files/Alpha_Diversity_Plots/adj_bis_status/phylogeny_plot(Faith's).png)
 - **Plotted Phylogenetic Diversity Against Metadata:**
   - Plotted phylogenetic diversity (PD) against the adjusted body iron storage status to explore its relationship.
   - Generated a boxplot to visualize the distribution of PD across different levels of adjusted body iron storage.
   - Customized the plot with appropriate axis labels.
   - Saved the customized plot of phylogenetic diversity against adjusted body iron storage as an image file named "phylogeny_plot(Faith's).png" in : `R_Scripts_files/Alpha_Diversity_Plots/adj_bis_status/phylogeny_plot(Faith's).png`.
+    ![image of phylogeny_plot](R_Scripts_files/Alpha_Diversity_Plots/adj_bis_status/phylogeny_plot(Faith's).png)
     
 **R-Script for diversity is here**: `R_Scripts_files/alpha_diversity_Rscript.r`
 
