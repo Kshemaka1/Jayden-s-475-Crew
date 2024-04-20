@@ -321,10 +321,12 @@ To conduct richness and diversity analyses on the various indicators for metabol
 3. Repeated the same process (steps 1 and 2) for `adj_bis_status`, `adj_ferritin_status`, `adj_rbp_status`, `infection_status` , and `crp_status` --> plots can be found in: `R_Scripts_files/Alpha_Diversity_Plots`
 
 **R-Script for diversity is here**: `R_Scripts_files/alpha_diversity_Rscript.r`
-
+**R-Script for Infection Status is here**: `R_Scripts_files/infected_stage_anemia_comparison_alpha_diversity.R`
 ### Results:
 - No significant difference in alpha diversity found within any of the metabolic indicators and in infection status **EXCEPT** for `adj_ferritin_status` (p value = 0.03724) - found [here](R_Scripts_files/Alpha_Diversity_Plots/adj_ferritin_status/adj_ferritin_status_t_test_richness.png)
   ![image of Ferritin Status Alpha Diversity Plot ](R_Scripts_files/Alpha_Diversity_Plots/adj_ferritin_status/Shannon_Diversity.png)
+- No significant difference between different stages of infection:
+  ![infection_plot](R_Scripts_files/Alpha_Diversity_Plots/Infection_status/Infection_Status_Kruskal-Wallis.png)
 
 ### Moving forward:
 - Due to the lack of alpha diversity between each infection status (Incubation, early convalescence, and late convalescence), we can group all infection stages into one “Infected” category for the beta diversity analysis.
@@ -336,7 +338,8 @@ To conduct richness and diversity analyses on the various indicators for metabol
 To group anemic samples into those who are only infected and redo Shannon alpha diversity analysis (and conduct beta diversity analysis) on adjusted ferritin status. 
 
 ### Procedure
-**Loading and Preparing Data**
+Script for parts A-C found [here](R_Scripts_files/infected_anemia_rare_alpha_diversity.R)
+**A. Loading and Preparing Data**
 1. **Load Data**: Begin by loading the dataset from "anemia_rare.RData".
 2. **Modify Sample Data**:
    - Access the sample data from the phyloseq object.
@@ -344,11 +347,11 @@ To group anemic samples into those who are only infected and redo Shannon alpha 
    - Update the phyloseq object with the new sample data.
    - Filter the dataset to include only samples classified as "Infected".
 
-**Phylogenetic Diversity Analysis**
+**B. Phylogenetic Diversity Analysis**
 1. **Calculate Faith's Phylogenetic Diversity**:
    - Compute Faith's PD and add it to the metadata table for further analysis.
 
-**Statistical Analysis of Alpha Diversity**
+**C. Statistical Analysis of Alpha Diversity**
 1. **Extract Data for Analysis**:
    - Estimate richness using Shannon and Chao1 indices and combine this with sample data.
 2. **Visualize Alpha Diversity**:
@@ -357,7 +360,7 @@ To group anemic samples into those who are only infected and redo Shannon alpha 
 3. **Enhanced Plotting**:
    - Enhance the alpha diversity plots by adding significance labels, adjusting axis properties, and incorporating error bars for visual clarity.
 
-**Beta Diversity Analysis**
+**D. Beta Diversity Analysis** (script found [here](R_Scripts_files/beta_diversity/beta_diversity.R))
 1. **Compute Distance Matrices**:
    - Calculate Bray-Curtis and Weighted Unifrac distance matrices.
 2. **Principal Coordinates Analysis (PCoA)**:
@@ -376,10 +379,10 @@ To group anemic samples into those who are only infected and redo Shannon alpha 
   
 - Beta Diversity - all plots can be found [here](R_Scripts_files/beta_diversity/Beta_Diversity_Plots):
   Weighted Unifrac analysis and a resulting PCoA plot demonstrated that there was no significant difference between low and high inflammation anemic infants (no significance detected)
-  Weighted Unifrac PCoA Plot:
+  - Weighted Unifrac PCoA Plot:
 ![image of PcOA Plot](R_Scripts_files/beta_diversity/Beta_Diversity_Plots/Weighted_Unifrac_PCoA.png)
 
 With special collaboration from Hochschule Osnabrück
 
 **Discussion**
-The absence of a significant difference, which contradicts results from P007, that demonstrated an association between inflammation and alterations in the gut microbiota, is intriguing. This discrepancy could be due to the gut microbiome's functional redundancy, where various microbes might perform similar functions to preserve stability amid pathophysiological changes. Another factor could be the lack of detailed information on the type of infection affecting anemic infants, as this is not clearly specified in the metadata, limiting the conclusions that can be drawn from the non-significant results. Moreover, the small number of anemic infants in the incubation stage of infection (n = 2) restricts the generalizability and representativeness of the findings.
+- The absence of a significant difference, which contradicts results from P007, that demonstrated an association between inflammation and alterations in the gut microbiota, is intriguing. This discrepancy could be due to the gut microbiome's functional redundancy, where various microbes might perform similar functions to preserve stability amid pathophysiological changes. Another factor could be the lack of detailed information on the type of infection affecting anemic infants, as this is not clearly specified in the metadata, limiting the conclusions that can be drawn from the non-significant results. Moreover, the small number of anemic infants in the incubation stage of infection (n = 2) restricts the generalizability and representativeness of the findings.
