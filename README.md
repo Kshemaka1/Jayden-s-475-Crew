@@ -329,3 +329,46 @@ To conduct richness and diversity analyses on the various indicators for metabol
 ### Moving forward:
 - Due to the lack of alpha diversity between each infection status (Incubation, early convalescence, and late convalescence), we can group all infection stages into one “Infected” category for the beta diversity analysis.
 - Since adj_ferritin status had a significant difference, perhaps we can focus on it instead, and now, instead of looking at metabolic markers, we can look at inflammation with ferritin as a marker of this. To do this, ferritin levels (adj_ferritin_status) can be reclassified, with normal levels classified as high inflammation and deficient levels classified as low inflammation. 
+
+## P008: Alpha Diversity Analyses for Infected Students
+** Date: March 1st **
+## Purpose: To group anemic samples into those who are only infected and redo Shannon alpha diversity analysis (and conduct beta diversity analysis) on adjusted ferritin status. 
+
+### Procedure
+**Loading and Preparing Data**
+1. **Load Data**: Begin by loading the dataset from "anemia_rare.RData".
+2. **Modify Sample Data**:
+   - Access the sample data from the phyloseq object.
+   - Create a new column `infection_status_updated` to classify participants as "Infected" or "Normal" based on their existing infection status.
+   - Update the phyloseq object with the new sample data.
+   - Filter the dataset to include only samples classified as "Infected".
+
+**Phylogenetic Diversity Analysis**
+1. **Calculate Faith's Phylogenetic Diversity**:
+   - Compute Faith's PD and add it to the metadata table for further analysis.
+
+**Statistical Analysis of Alpha Diversity**
+1. **Extract Data for Analysis**:
+   - Estimate richness using Shannon and Chao1 indices and combine this with sample data.
+2. **Visualize Alpha Diversity**:
+   - Generate box plots to visualize alpha diversity measures (Shannon and Chao1) by adjusted ferritin status.
+   - Perform Wilcoxon Rank Sum tests to compare alpha diversity indices between groups with different ferritin statuses.
+3. **Enhanced Plotting**:
+   - Enhance the alpha diversity plots by adding significance labels, adjusting axis properties, and incorporating error bars for visual clarity.
+
+**Beta Diversity Analysis**
+1. **Compute Distance Matrices**:
+   - Calculate Bray-Curtis and Weighted Unifrac distance matrices.
+2. **Principal Coordinates Analysis (PCoA)**:
+   - Perform PCoA for both Bray-Curtis and Weighted Unifrac distances.
+3. **Visualization**:
+   - Plot the ordination results to visualize the beta diversity, and coloring points by adjusting ferritin status to examine patterns.
+   - Utilize titles and labels to delineate different analyses and results.
+4. **Statistical Testing**:
+   - Conduct Wilcoxon tests on the distance matrices to assess differences in microbial community composition related to ferritin status.
+
+**Results:**
+
+- Alpha Diversity
+- Beta Diversity:
+![image of PcOA Plot](R_Scripts_files/beta_diversity/Weighted Unifrac PCoA.png)
