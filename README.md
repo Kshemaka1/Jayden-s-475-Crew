@@ -378,3 +378,5 @@ To group anemic samples into those who are only infected and redo Shannon alpha 
   Weighted Unifrac analysis and a resulting PCoA plot demonstrated that there was no significant difference between low and high inflammation anemic infants
   Weighted Unifrac PCoA Plot:
 ![image of PcOA Plot](R_Scripts_files/beta_diversity/Beta_Diversity_Plots/Weighted_Unifrac_PCoA.png)
+
+With special collaboration through Hochschule Osnabrück
