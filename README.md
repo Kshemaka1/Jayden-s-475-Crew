@@ -21,8 +21,8 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
    - [P001: Importing and Demultiplexing the Anemia Dataset](#P001-Importing-and-Demultiplexing-the-Anemia-Dataset)
    - [P002: Generating ASVs](#P002-Generating-ASVs)
    - [P003: Taxonomic Analysis](#P003-Taxonomic-Analysis)
-   - [P006: Creating a Phyloseq Object](#P006-Creating-a-Phyloseq-Object)
-   - [P007: Alpha Diversity Analyses in R](#P007-Alpha-Diversity-Analyses-in-R)
+   - [P005: Creating a Phyloseq Object](#P005-Creating-a-Phyloseq-Object)
+   - [P006: Alpha Diversity Analyses in R](#P006-Alpha-Diversity-Analyses-in-R)
 
 
 # Project Aims
@@ -50,7 +50,7 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
 #### To-Do List
 
 - [x] **Figure 1:**
-    - [ ] 2 panels, both alpha diversities
+    - [x] 2 panels, both alpha diversities
     - [x] Kruskal-Wallis test for infection status
 
 - [x] **Figure 2:**
@@ -74,11 +74,11 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
 - [x] **Figure 6:**
     - [x] Flip it so that it's normal vs deficient
 
-- [ ] **General Tasks:**
+- [x] **General Tasks:**
     - [x] Simplify research question
-    - [ ] Define convalescence in the paper
+    - [x] Define convalescence in the paper
     - [x] Name of figure should reflect the message of the figure - don't include the methodology
-    - [ ] Define the use of ferritin 
+    - [x] Define the use of ferritin 
     - [x] Perform enzyme analysis
 
 ### March 20 2024 at 10:15 am
@@ -228,7 +228,7 @@ To train a classifier to do taxonomic analysis and generate a taxa bar graph
 *taxa-bar-plots-truncated.qzv - Taxonomy Level 3*
 ![image of taxonomy bar plot](QIIME_files/QIIME_view_images/taxabarplot.png)
 
-## P003: Generating an Alpha Rarefaction Curve
+## P004: Generating an Alpha Rarefaction Curve
 **Date:** Feb 17th, 2024
 
 ### Purpose: 
@@ -246,7 +246,7 @@ To filter out mitochondria and chloroplast features and generate an alpha rarefa
 *alpha_rarefaction.qzv*
 ![image of alpha_rarefaction_curve](QIIME_files/QIIME_view_images/alpha_rarefaction_curve.png)
 
-## P006: Creating a Phyloseq Object
+## P005: Creating a Phyloseq Object
 **Date:** Feb 28th, 2024
 
 ### Purpose: 
@@ -283,7 +283,7 @@ To create a Phyloseq object from our dataset to carry out alpha/beta diversity a
 - The 12-month-old anemic data before rarefication are stored under: `Phyloseq_Files/12M_anemia_final.RData`.
 - The rarefied RData is stored under: `Phyloseq_Files/anemia_rare.RData`.
   
-## P007: Alpha Diversity Analyses in R
+## P006: Alpha Diversity Analyses in R
 **Date:** Feb 28th, 2024
 ### Purpose: 
 To conduct richness and diversity analyses on the various indicators for metabolism using the anemia_rare.RData file from P006.
@@ -332,7 +332,7 @@ To conduct richness and diversity analyses on the various indicators for metabol
 - Due to the lack of alpha diversity between each infection status (Incubation, early convalescence, and late convalescence), we can group all infection stages into one “Infected” category for the beta diversity analysis.
 - Since adj_ferritin status had a significant difference, perhaps we can focus on it instead, and now, instead of looking at metabolic markers, we can look at inflammation with ferritin as a marker of this. To do this, ferritin levels (adj_ferritin_status) can be reclassified, with normal levels classified as high inflammation and deficient levels classified as low inflammation. 
 
-## P008: Alpha and Beta Diversity Analyses for Infected Students
+## P007: Alpha and Beta Diversity Analyses for Infected Students
 **Date: March 1st**
 ### Purpose: 
 To group anemic samples into those who are only infected and redo Shannon alpha diversity analysis (and conduct beta diversity analysis) on adjusted ferritin status. 
@@ -388,7 +388,7 @@ With special collaboration from Hochschule Osnabrück
 **Discussion**
 - The absence of a significant difference, which contradicts results from P007, that demonstrated an association between inflammation and alterations in the gut microbiota, is intriguing. This discrepancy could be due to the gut microbiome's functional redundancy, where various microbes might perform similar functions to preserve stability amid pathophysiological changes. Another factor could be the lack of detailed information on the type of infection affecting anemic infants, as this is not clearly specified in the metadata, limiting the conclusions that can be drawn from the non-significant results. Moreover, the small number of anemic infants in the incubation stage of infection (n = 2) restricts the generalizability and representativeness of the findings.
 
-## P009: Differential Abundance
+## P008: Differential Abundance
 **Date: March 6th**
 ### Purpose:
 - Analyze and document the differential expression of microbial genera in the gut microbiomes of anemic infants, focusing on any inflammation-induced shifts
@@ -441,7 +441,7 @@ With special collaboration from Hochschule Osnabrück
   - This reduction in Bifidobacterium could exacerbate inflammatory processes, potentially contributing to a more hostile gut environment.
 
 
-## P010: Core Microbiome
+## P009: Core Microbiome
 **Date: March 13th**
 ### Purpose: 
 - To identify specific microbial taxa associated with inflammation levels through a core microbiome analysis
