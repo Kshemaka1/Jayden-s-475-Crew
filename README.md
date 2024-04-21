@@ -500,3 +500,21 @@ With special collaboration from Hochschule Osnabrück
 - **Shared Taxa Between High and Low Inflammation:**
   - Includes *Bacteroides fragilis*, *Ruminococcus gnavus*, and a species within the *Escherichia-Shigella* genus.
   - An undefined species within the *Bifidobacterium* genus is also common to both conditions.
+
+ #### Discussion
+ - Core microbiome analysis identified:
+  - **Unique to low inflammation:**
+    - Lactobacillus
+    - Enterococcus
+    - Bifidobacterium
+      - Known for probiotic and anti-inflammatory properties.
+  - **Unique to high inflammation:**
+    - Faecalibacterium
+    - Blautia
+      - Known for anti-inflammatory properties and butyrate production.
+- Butyrate's role:
+  - Inhibits pro-inflammatory immune cells.
+  - Activates anti-inflammatory immune cells.
+  - Suggests that high inflammation promotes growth of beneficial bacteria to counteract inflammation.
+
+  
