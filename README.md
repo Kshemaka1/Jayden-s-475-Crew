@@ -391,7 +391,8 @@ With special collaboration from Hochschule Osnabrück
 ## P009: Differential Abundance
 **Date: March 6th**
 ### Purpose:
-### Procedure (script found [here](R_Scripts_files/DESeq.R):
+- Analyze and document the differential expression of microbial genera in the gut microbiomes of anemic infants, focusing on any inflammation-induced shifts
+### Procedure (script found [here](R_Scripts_files/DESeq.R)):
 1. **Load Data**:
    - Load the dataset from "12M_anemia_final.RData".
 2. **Modify Sample Data**:
