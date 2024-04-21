@@ -376,12 +376,12 @@ To group anemic samples into those who are only infected and redo Shannon alpha 
 
 - Alpha Diversity
   Surprisingly, adjusted ferritin status showed no significant difference in Alpha diversity in only Infected Patients.
-  ![image of Shannon Diversity Adj Ferritin_Infected](R_Scripts_files/Alpha_Diversity_Plots/adj_ferritin_status/Infected_Anemic_Shannon_Ferritin_plot.png) 
+- ![image of Shannon Diversity Adj Ferritin_Infected](R_Scripts_files/Alpha_Diversity_Plots/adj_ferritin_status/Infected_Anemic_Shannon_Ferritin_plot.png) 
   
 - Beta Diversity - all plots can be found [here](R_Scripts_files/Beta_Diversity_Plots):
   Weighted Unifrac analysis and a resulting PCoA plot demonstrated that there was no significant difference between low and high inflammation anemic infants (no significance detected)
   - Weighted Unifrac PCoA Plot:
-![image of PcOA Plot](R_Scripts_files/Beta_Diversity_Plots/Weighted_Unifrac_PCoA.png)
+- ![image of PcOA Plot](R_Scripts_files/Beta_Diversity_Plots/Weighted_Unifrac_PCoA.png)
 
 With special collaboration from Hochschule Osnabrück
 
