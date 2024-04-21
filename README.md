@@ -420,7 +420,7 @@ With special collaboration from Hochschule Osnabrück
 
 #### Bar Plot of Significant Results
 1. **Prepare Data**:
-   - Convert taxonomy data to a dataframe, join with the significant results, and sort based on log2 fold change.
+   - Convert taxonomy data to a data frame, join with the significant results, and sort based on log2 fold change.
    - Clean the dataset by filtering out entries with undefined genus names.
 2. **Create Bar Plot**:
    - Generate a bar plot representing the log2 fold change of significant ASVs categorized by genus.
@@ -437,5 +437,66 @@ With special collaboration from Hochschule Osnabrück
 
 ### Discussion:
 - Bifidobacterium was uniquely downregulated compared to other genera that were significantly upregulated in infants with high inflammation.
-  - Known for its anti-inflammatory properties, the decline of Bifidobacterium may indicate a shift towards a proinflammatory state in the gut environment of infected infants.
+  - Known for its anti-inflammatory properties, the decline of *Bifidobacterium* may indicate a shift towards a pro-inflammatory state in the gut environment of infected infants.
   - This reduction in Bifidobacterium could exacerbate inflammatory processes, potentially contributing to a more hostile gut environment.
+
+
+## P010: Core Microbiome
+**Date: March 13th**
+### Purpose: 
+- To identify specific microbial taxa associated with inflammation levels through a core microbiome analysis
+
+**Procedure** (full script found [here](R_Scripts_files/coremicrobiome.R))
+#### Setup and Data Preprocessing
+1. **Loading Data**:
+   - Load the dataset from "12M_anemia_final.RData".
+2. **Modify and Update Sample Data**:
+   - Access the sample data from the phyloseq object `TwelveM_anemia`.
+   - Introduce a new column `infection_status_updated` to categorize participants as "Infected" or "Normal" based on predefined infection status categories.
+   - Update the phyloseq object to reflect these changes.
+   - Retain only samples labeled as "Infected" for further analysis.
+
+#### Core Microbiome Analysis
+1. **Data Transformation**:
+   - Convert counts to relative abundance for the filtered dataset.
+2. **Subsetting Data by Ferritin Status**:
+   - Further subset data by `adj_ferritin_status` to separate groups into "normal" and "deficient".
+3. **Identify Core Microbiota**:
+   - Determine core microbiota members in each subset based on a prevalence threshold of 70% and a detection limit of zero.
+4. **Visualization of Core ASVs**:
+   - Generate bar plots to display the relative abundance of ASVs in each subset, enhancing the plots with aesthetic adjustments for clarity and readability.
+
+#### Comparative Analysis Using Venn Diagrams
+1. **Identify and Visualize Overlapping and Unique ASVs**:
+   - Extract lists of core members for both "normal" and "deficient" groups using the same thresholds.
+   - Use a Venn diagram to visualize ASVs shared between or unique to each ferritin status group, with adjustments to accommodate long set labels.
+### Taxonomic Analysis of Unique and Common ASVs
+1. **Extract Unique and Common ASVs**:
+   - Identify ASVs unique to each group and those shared between groups.
+2. **Retrieve Taxonomic Information**:
+   - Prune the phyloseq object to include only these specific ASVs and convert their taxonomic data into data frames for easier manipulation.
+3. **Prepare and Visualize Data**:
+   - Label each taxon with its corresponding group status (unique or common).
+   - Combine all taxonomic data into a single data frame to facilitate comprehensive analysis and visualization.
+
+#### Results
+- **Graph of relative abundance** (note that normal = high inflammation and deficient = low inflammation)
+- ![relative abundance](R_Scripts_files/Core_Microbiome_Plots/Relative_Abundance.png)
+- **Venn Diagram of Core Taxa**
+- ![venn_diagram](R_Scripts_files/Core_Microbiome_Plots/venn_adj_ferritin_status_detection-0_prevalence-0.7.png)
+- Identified three ASVs unique to low inflammation status, present in at least 70% of the samples.
+- Found two ASVs unique to high inflammation status.
+- Noted four shared ASVs, indicating some similarity in microbial composition between both conditions.
+- **Table of Identified Core Taxa**
+- ![table](R_Scripts_files/Core_Microbiome_Plots/table.png)
+
+  - **Low Inflammation Condition:**
+  - Associated exclusively with *Lactobacillus mucosae* and an unclassified species within the *Enterococcus* genus.
+  - Characterized by the presence of *Bifidobacterium bifidum*.
+
+- **High Inflammation Condition:**
+  - Marked by an uncharacterized species within the *Faecalibacterium* and *Blautia* genera.
+
+- **Shared Taxa Between High and Low Inflammation:**
+  - Includes *Bacteroides fragilis*, *Ruminococcus gnavus*, and a species within the *Escherichia-Shigella* genus.
+  - An undefined species within the *Bifidobacterium* genus is also common to both conditions.
