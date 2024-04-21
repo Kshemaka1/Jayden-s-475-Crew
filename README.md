@@ -387,3 +387,54 @@ With special collaboration from Hochschule Osnabrück
 
 **Discussion**
 - The absence of a significant difference, which contradicts results from P007, that demonstrated an association between inflammation and alterations in the gut microbiota, is intriguing. This discrepancy could be due to the gut microbiome's functional redundancy, where various microbes might perform similar functions to preserve stability amid pathophysiological changes. Another factor could be the lack of detailed information on the type of infection affecting anemic infants, as this is not clearly specified in the metadata, limiting the conclusions that can be drawn from the non-significant results. Moreover, the small number of anemic infants in the incubation stage of infection (n = 2) restricts the generalizability and representativeness of the findings.
+
+## P009: Differential Abundance
+**Date: March 6th**
+### Purpose:
+### Procedure (script found [here](R_Scripts_files/DESeq.R):
+1. **Load Data**:
+   - Load the dataset from "12M_anemia_final.RData".
+2. **Modify Sample Data**:
+   - Access and update the sample data from the phyloseq object `TwelveM_anemia`.
+   - Create a new column `infection_status_updated` to categorize participants as either "Infected" or "Normal" based on their infection status.
+   - Update this classification in the phyloseq object.
+   - Filter the dataset to retain only samples labeled as "Infected".
+
+#### Differential Expression Analysis with DESeq2
+1. **Prepare Data for DESeq2**:
+   - Convert the filtered phyloseq object to a DESeq2 dataset, considering `adj_ferritin_status` as a variable.
+2. **Run DESeq Analysis**:
+   - Execute differential expression analysis using DESeq2, setting 'deficient' as the reference group for the `adj_ferritin_status` contrast.
+   - View the results table for detailed inspection of the outcomes.
+
+#### Visualization and Interpretation
+1. **Generate Volcano Plot**:
+   - Plot the effect size versus significance (p-value) using a volcano plot format, highlighting significant changes.
+   - Modify the dataset to exclude NA values for clarity in the plot.
+   - Customize the plot with color coding to distinguish significant results, and annotate axes and legend for clarity.
+2. **Identify Significant ASVs**:
+   - Filter for ASVs that show significant adjusted p-values and large fold changes.
+   - Prune the phyloseq object to include only these significant ASVs.
+   - Prepare a detailed dataset of significant ASVs for further analysis.
+
+#### Bar Plot of Significant Results
+1. **Prepare Data**:
+   - Convert taxonomy data to a dataframe, join with the significant results, and sort based on log2 fold change.
+   - Clean the dataset by filtering out entries with undefined genus names.
+2. **Create Bar Plot**:
+   - Generate a bar plot representing the log2 fold change of significant ASVs categorized by genus.
+   - Use error bars to depict the variability and fill color to indicate upregulation or downregulation.
+   - Customize the plot's aesthetic elements such as text angles, legend positioning, and grid visibility for enhanced readability.
+  
+### Results:
+- From our volcano plot, it appeared that 20 genera showed significant fold changes in expression
+   - ![volcano plot](R_Scripts_files/Differential_abundance_Plots/Volcano_Plot_of_Genus Expression.png)
+- Of these 19 genera showed significant upregulation (p < 0.01) in infected anemic infants with high inflammation levels.
+  - Bifidobacterium was significantly downregulated (p < 0.01) in the same group.
+  - ![genus_expression](R_Scripts_files/Differential_abundance_Plots/Genus_Expression.png) 
+- These results indicate a substantial shift in microbial composition due to inflammation in the gut environment.
+
+### Discussion:
+- Bifidobacterium was uniquely downregulated compared to other genera that were significantly upregulated in infants with high inflammation.
+  - Known for its anti-inflammatory properties, the decline of Bifidobacterium may indicate a shift towards a proinflammatory state in the gut environment of infected infants.
+  - This reduction in Bifidobacterium could exacerbate inflammatory processes, potentially contributing to a more hostile gut environment.
