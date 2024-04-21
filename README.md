@@ -521,4 +521,44 @@ With special collaboration from Hochschule Osnabrück
   - Activates anti-inflammatory immune cells.
   - Suggests that high inflammation promotes growth of beneficial bacteria to counteract inflammation.
 
-  
+ ## P010: Functional Pathways Analysis
+ ### Purpose:
+
+ ### Procedure (Script found [here](Functional_Analysis/Picrust_Analysis_Infection_status_updated/Picrust_Analysis.R)):
+ #### Initial Setup and Data Loading
+1. **Load Required Libraries**: Import all necessary R libraries including `tidyverse`, `DESeq2`, and `ggpicrust2` for data manipulation and analysis.
+2. **Import Metadata**:
+   - Load metadata from "anemia_metadata.txt".
+   - Filter metadata to include only participants identified as anemic and then further to those labeled as "Infected".
+
+#### Data Import and Preprocessing
+1. **Load Pathway Abundance Data**:
+   - Import pathway abundance data from "pathway_abundance.tsv".
+   - Ensure the data frame contains correct column names and is free from white spaces.
+2. **Filter and Clean Data**:
+   - Match and filter abundance data to include only samples present in the filtered metadata.
+   - Remove samples with no pathway data and ensure correct formatting for downstream analysis.
+
+#### Differential Abundance Analysis (DAA)
+1. **Prepare Metadata for DESeq2**:
+   - Relevel `adj_ferritin_status` in metadata to set 'normal' as the reference group.
+2. **Perform DAA**:
+   - Execute pathway differential abundance analysis using the DESeq2 method.
+   - Annotate pathways to provide descriptive names instead of cryptic IDs.
+3. **Filter Results for Significance**:
+   - Extract features with significant p-values (less than 0.05) and prepare them for further analysis and visualization.
+
+#### Visualization of Pathway Analysis
+1. **Prepare Data for Visualization**:
+   - Match significant pathways with their descriptions for clear labeling.
+   - Adjust data tables to focus only on significant pathways and associated metadata.
+2. **Generate Heatmap and PCA Plot**:
+   - Create a heatmap and PCA plot to visualize patterns and differences in pathway activity across samples grouped by adjusted ferritin status.
+
+#### Custom Analysis with Updated DESeq2 Function
+1. **Custom DESeq2 Analysis**:
+   - Load a custom DESeq2 function tailored for this dataset.
+   - Run the function to calculate log2 fold changes and other statistics for pathways.
+2. **Bar Plot of Significant Pathways**:
+   - Filter the results to focus on significantly altered pathways.
+   - Visualize these pathways using a bar plot that highlights differences in log2 fold changes and significance levels.
