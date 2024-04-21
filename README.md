@@ -428,7 +428,7 @@ With special collaboration from Hochschule Osnabrück
   
 ### Results:
 - From our volcano plot, it appeared that 20 genera showed significant fold changes in expression
-   - ![volcano plot](R_Scripts_files/Differential_abundance_Plots/Volcano_Plot_of_Genus Expression.png)
+   - ![volcano plot](R_Scripts_files/Differential_abundance_Plots/Volcano_Plot_of_Genus_Expression.png)
 - Of these 19 genera showed significant upregulation (p < 0.01) in infected anemic infants with high inflammation levels.
   - Bifidobacterium was significantly downregulated (p < 0.01) in the same group.
   - ![genus_expression](R_Scripts_files/Differential_abundance_Plots/Genus_Expression.png) 
