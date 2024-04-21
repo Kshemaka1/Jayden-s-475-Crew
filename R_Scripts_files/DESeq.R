@@ -53,7 +53,7 @@ volcano_plot <- res_non_na %>%
                      labels = c("Not Significant", "Significant (Adj P < 0.01 & |Fold Change| > 2)")) +
   labs(x = "log2 Fold Change (High vs Low Inflammation)",
        y = "-Log10 Adjusted P (Significance)",
-       color = "Gene Significance",
+       color = "Genus Significance",
       ) +
   theme_minimal() +
   theme(axis.title.x = element_text(margin = margin(t = 10)), # Adjust top margin of x-axis title
