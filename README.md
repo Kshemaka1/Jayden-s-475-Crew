@@ -21,8 +21,12 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
    - [P001: Importing and Demultiplexing the Anemia Dataset](#P001-Importing-and-Demultiplexing-the-Anemia-Dataset)
    - [P002: Generating ASVs](#P002-Generating-ASVs)
    - [P003: Taxonomic Analysis](#P003-Taxonomic-Analysis)
+   - [P004: Generating an Alpha Rarefaction Curve](#P004-Genearting-an-Alpha-Rarefaction-Curve)
    - [P005: Creating a Phyloseq Object](#P005-Creating-a-Phyloseq-Object)
    - [P006: Alpha Diversity Analyses in R](#P006-Alpha-Diversity-Analyses-in-R)
+   - [P007: Alpha and Beta Diversity Analyses for Infected Students](#P007-Alpha-and-Beta-Diversity-Analyses-for-Infected-Students)
+   - [P008: Differential Abundance](#P008-Differential-Abundance)
+   - [P009: Core Microbiome](#P009-Core-Microbiome)
 
 
 # Project Aims
