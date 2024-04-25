@@ -521,8 +521,46 @@ With special collaboration from Hochschule Osnabrück
   - Activates anti-inflammatory immune cells.
   - Suggests that high inflammation promotes growth of beneficial bacteria to counteract inflammation.
 
- ## P010: Functional Pathways Analysis
- ### Purpose:
+ ## P010: Functional Pathways Analysis Custom DESeq2 Function
+
+### Custom DESeq2 Function for Differential Expression Analysis
+
+### Purpose
+This custom R function, `DEseq2_function`, performs differential expression analysis using the DESeq2 package. It is specifically designed to analyze pathway data related to specific conditions or groups in a study. The function takes two main inputs: a filtered abundance table of pathways and corresponding metadata. 
+
+### Inputs
+1. **Abundance Table**:
+   - A filtered abundance table where pathways are listed in the first column, and no row names are present. This table should include sample data with corresponding pathway abundance values.
+2. **Metadata**:
+   - Filtered metadata that aligns with the samples in the abundance table. This metadata should indicate the group or condition each sample belongs to.
+
+### Parameters
+- `abundance_table`: The table containing pathway abundance data for each sample.
+- `metadata`: The metadata associated with each sample, indicating group or condition.
+- `col_of_interest`: The specific column in the metadata that defines the groups for comparison in the DESeq2 analysis.
+
+### Function Details
+1. **Preparation of Data**:
+   - Convert the first column of the abundance table into row names, effectively setting pathways as row identifiers.
+   - Adjust the metadata to rename the column of interest to a standard format ("Group_group_nonsense") for consistency in the DESeq2 analysis.
+
+2. **Group Combination and Analysis**:
+   - Generate all possible pairwise combinations of groups from the metadata for differential expression analysis.
+   - For each combination:
+     - Subset the abundance data and metadata to include only samples from the selected groups.
+     - Round the abundance data to ensure it is suitable for count-based analysis in DESeq2.
+     - Construct a DESeq2 dataset object using the subset data and a model design based solely on the group.
+     - Estimate size factors and execute the DESeq2 analysis, obtaining results for each group comparison.
+
+3. **Result Compilation**:
+   - Collect and format the results from all comparisons into a comprehensive data frame, providing a clear overview of differential expression across different group comparisons.
+
+### Usage
+To use this function:
+- Ensure your metadata and abundance data are correctly formatted and aligned.
+- Call the function with the abundance table, metadata, and the specific metadata column you are interested in analyzing.
+
+## P011: Functional Pathways Analysis 
 
  ### Procedure (Script found [here](Functional_Analysis/Picrust_Analysis_Infection_status_updated/Picrust_Analysis.R)):
  #### Initial Setup and Data Loading
@@ -562,3 +600,50 @@ With special collaboration from Hochschule Osnabrück
 2. **Bar Plot of Significant Pathways**:
    - Filter the results to focus on significantly altered pathways.
    - Visualize these pathways using a bar plot that highlights differences in log2 fold changes and significance levels.
+  
+## P012 Enzymatic Pathway Analysis Workflow Using DESeq2 and PICRUSt2
+
+### Initial Setup and Data Loading
+1. **Load Required Libraries**: Import necessary R libraries including `readr`, `tidyverse`, `DESeq2`, and `ggpicrust2` for data handling, analysis, and visualization.
+2. **Metadata Importation**:
+   - Load metadata from "anemia_metadata.txt".
+   - Filter metadata to retain only participants identified as anemic and then further to those classified as "Infected".
+
+### Data Import and Preparation
+1. **Load Enzyme Abundance Data**:
+   - Import enzyme abundance data from "ec_metagenome.tsv", ensuring it is properly formatted and trimmed of whitespace.
+2. **Data Cleaning and Filtering**:
+   - Filter metadata to exclude any entries with missing values for the column of interest (e.g., adjusted ferritin status).
+   - Match and retain abundance data for samples present in the filtered metadata.
+   - Ensure the abundance data is appropriately filtered and cleaned for subsequent analysis, including removing any samples with no data.
+
+### Differential Abundance Analysis (DAA)
+1. **Setup for DESeq2 Analysis**:
+   - Relevel the `adj_ferritin_status` in metadata to set a specific group (e.g., 'deficient') as the reference for comparisons.
+   - Prepare the abundance data by setting pathways as rownames and ensuring all entries are properly formatted for DESeq2.
+2. **Perform DAA**:
+   - Execute differential abundance analysis using DESeq2, focusing on pathways.
+   - Annotate pathways with descriptive labels instead of cryptic identifiers for clarity.
+3. **Results Filtering**:
+   - Filter the analysis results to identify features with significant p-values and notable log2 fold changes for detailed investigation.
+
+### Visualization and Further Analysis
+1. **Data Preparation for Visualization**:
+   - Adjust the abundance data and results to label pathways by their descriptions for more intuitive understanding.
+   - Prepare data subsets focusing on significant and biologically relevant changes.
+2. **Generate Visualizations**:
+   - Create a heatmap to display patterns of enzyme pathway activity across different groups.
+   - Perform PCA to explore the variance and clustering of samples based on pathway activity.
+   - Develop a bar plot to visually represent the log2 fold changes of significant pathways, enhancing understanding of the impact of conditions on enzyme levels.
+
+### Integrating Custom DESeq2 Function
+1. **Custom Function Usage**:
+   - Load and apply a custom DESeq2 function designed for tailored analysis, ensuring it uses the updated and relevant metadata.
+   - Run the function to obtain refined results based on specific analytic criteria, such as significance thresholds and fold change magnitudes.
+2. **Results Refinement and Plotting**:
+   - Filter results to focus on the most significant and impactful pathways.
+   - Order results by log2 fold change and plot them to highlight the most influential enzyme pathways under study conditions.
+
+### Conclusion
+This workflow provides a comprehensive approach to analyzing enzyme pathway activity in an anemia study using advanced bioinformatics tools like DESeq2 and PICRUSt2. It includes detailed steps from data preparation to in-depth analysis and visualization, aimed at uncovering significant biological insights related to adjusted ferritin status in anemic patients.
+
