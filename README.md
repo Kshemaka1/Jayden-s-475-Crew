@@ -27,9 +27,9 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
    - [P007: Alpha and Beta Diversity Analyses for Infected Students](#P007-Alpha-and-Beta-Diversity-Analyses-for-Infected-Students)
    - [P008: Differential Abundance](#P008-Differential-Abundance)
    - [P009: Core Microbiome](#P009-Core-Microbiome)
-   - [P010: Functional Pathways Analysis Custom DESeq2 Function](#P010-Functional Pathways Analysis Custom DESeq2 Function)
-   - [P011: Functional Pathways Analysis](#P011-Functional Pathways Analysis)
-   - [P012: Enzymatic Pathway Analysis Workflow Using DESeq2 and PICRUSt2](#P012-Enzymatic Pathway Analysis Workflow Using DESeq2 and PICRUSt2)
+   - [P010: Functional Pathways Analysis Custom DESeq2 Function](#P010-Functional-Pathways-Analysis-Custom-DESeq2-Function)
+   - [P011: Functional Pathways Analysis](#P011-Functional-Pathways-Analysis)
+   - [P012: Enzymatic Pathway Analysis Workflow Using DESeq2 and PICRUSt2](#P012-Enzymatic-Pathway-Analysis-Workflow-Using-DESeq2-and-PICRUSt2)
 
 
 # Project Aims
