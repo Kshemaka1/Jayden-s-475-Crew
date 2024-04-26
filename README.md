@@ -27,6 +27,9 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
    - [P007: Alpha and Beta Diversity Analyses for Infected Students](#P007-Alpha-and-Beta-Diversity-Analyses-for-Infected-Students)
    - [P008: Differential Abundance](#P008-Differential-Abundance)
    - [P009: Core Microbiome](#P009-Core-Microbiome)
+   - [P010: Functional Pathways Analysis Custom DESeq2 Function](#P010-Functional Pathways Analysis Custom DESeq2 Function)
+   - [P011: Functional Pathways Analysis](#P011-Functional Pathways Analysis)
+   - [P012: Enzymatic Pathway Analysis Workflow Using DESeq2 and PICRUSt2](#P012-Enzymatic Pathway Analysis Workflow Using DESeq2 and PICRUSt2)
 
 
 # Project Aims
@@ -662,7 +665,7 @@ To use this function:
 
 ### Results
 - **Log2 fold change Bar Plot**
-- ![EnzymeBarPlot](Functional_Analysis/Picrust_Analysis_Enzymes/Enzymes_adj_ferritin_status_deficient as reference .png)
+- ![EnzymeBarPlot](Functional_Analysis/Picrust_Analysis_Enzymes/Enzymes_barplot.png)
 - All signficant enzymes were upregulated in infants with high inflammation levels
 - Only Enzymes with a log2 fold change>4 shown
 
