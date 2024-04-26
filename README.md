@@ -562,7 +562,7 @@ To use this function:
 
 ## P011: Functional Pathways Analysis 
 
- ### Procedure (Script found [here](Functional_Analysis/Picrust_Analysis_Infection_status_updated/Picrust_Analysis.R)):
+ ### Procedure (Script found [here](Functional_Analysis/Picrust_Analysis_adj_ferritin_status/Picrust_Analysis_Ferritin.R)):
  #### Initial Setup and Data Loading
 1. **Load Required Libraries**: Import all necessary R libraries including `tidyverse`, `DESeq2`, and `ggpicrust2` for data manipulation and analysis.
 2. **Import Metadata**:
@@ -590,8 +590,8 @@ To use this function:
 1. **Prepare Data for Visualization**:
    - Match significant pathways with their descriptions for clear labeling.
    - Adjust data tables to focus only on significant pathways and associated metadata.
-2. **Generate Heatmap and PCA Plot**:
-   - Create a heatmap and PCA plot to visualize patterns and differences in pathway activity across samples grouped by adjusted ferritin status.
+2. **Generate Heatmap**:
+   - Create a heatmap to visualize patterns and differences in pathway activity across samples grouped by adjusted ferritin status.
 
 #### Custom Analysis with Updated DESeq2 Function
 1. **Custom DESeq2 Analysis**:
@@ -600,16 +600,32 @@ To use this function:
 2. **Bar Plot of Significant Pathways**:
    - Filter the results to focus on significantly altered pathways.
    - Visualize these pathways using a bar plot that highlights differences in log2 fold changes and significance levels.
+   
+#### Results
+- **Heatmap of Pathway Activity**
+- ![HeatMap](Functional_Analysis/Picrust_Analysis_adj_ferritin_status/heatmap_ferritin_status.png)
+- No particulary notable patterns observed from heatmap of pathway activity 
+- **Log2 fold change Bar Plot**
+- ![Log2FoldChangeBarPlot](Functional_Analysis/Picrust_Analysis_adj_ferritin_status/barplot_adj_ferritin_status.png)
+- All signficant pathways were upregulated in infants with high inflammation levels
+
+#### Discussion
+
+- **From Log2 Fold Change Bar Plot**:
+  - The top 3 upregulated pathways were all degradation pathways. This finding suggests a metabolic adaptation where degradation processes are enhanced.
+  - This upregulation may indicate the need to meet the increased energy demands associated with high inflammation, potentially to fuel the immune response. Such adaptations could be crucial for the body's ability to manage and respond to inflammatory conditions effectively.
+
   
 ## P012 Enzymatic Pathway Analysis Workflow Using DESeq2 and PICRUSt2
 
-### Initial Setup and Data Loading
+### Procedure (Script found [here](Functional_Analysis/Picrust_Analysis_Enzymes/Picrust_Analysis_Enzymes.R)):
+#### Initial Setup and Data Loading
 1. **Load Required Libraries**: Import necessary R libraries including `readr`, `tidyverse`, `DESeq2`, and `ggpicrust2` for data handling, analysis, and visualization.
 2. **Metadata Importation**:
    - Load metadata from "anemia_metadata.txt".
    - Filter metadata to retain only participants identified as anemic and then further to those classified as "Infected".
 
-### Data Import and Preparation
+#### Data Import and Preparation
 1. **Load Enzyme Abundance Data**:
    - Import enzyme abundance data from "ec_metagenome.tsv", ensuring it is properly formatted and trimmed of whitespace.
 2. **Data Cleaning and Filtering**:
@@ -617,7 +633,7 @@ To use this function:
    - Match and retain abundance data for samples present in the filtered metadata.
    - Ensure the abundance data is appropriately filtered and cleaned for subsequent analysis, including removing any samples with no data.
 
-### Differential Abundance Analysis (DAA)
+#### Differential Abundance Analysis (DAA)
 1. **Setup for DESeq2 Analysis**:
    - Relevel the `adj_ferritin_status` in metadata to set a specific group (e.g., 'deficient') as the reference for comparisons.
    - Prepare the abundance data by setting pathways as rownames and ensuring all entries are properly formatted for DESeq2.
@@ -627,7 +643,7 @@ To use this function:
 3. **Results Filtering**:
    - Filter the analysis results to identify features with significant p-values and notable log2 fold changes for detailed investigation.
 
-### Visualization and Further Analysis
+#### Visualization and Further Analysis
 1. **Data Preparation for Visualization**:
    - Adjust the abundance data and results to label pathways by their descriptions for more intuitive understanding.
    - Prepare data subsets focusing on significant and biologically relevant changes.
@@ -636,13 +652,24 @@ To use this function:
    - Perform PCA to explore the variance and clustering of samples based on pathway activity.
    - Develop a bar plot to visually represent the log2 fold changes of significant pathways, enhancing understanding of the impact of conditions on enzyme levels.
 
-### Integrating Custom DESeq2 Function
+#### Integrating Custom DESeq2 Function
 1. **Custom Function Usage**:
    - Load and apply a custom DESeq2 function designed for tailored analysis, ensuring it uses the updated and relevant metadata.
    - Run the function to obtain refined results based on specific analytic criteria, such as significance thresholds and fold change magnitudes.
 2. **Results Refinement and Plotting**:
    - Filter results to focus on the most significant and impactful pathways.
    - Order results by log2 fold change and plot them to highlight the most influential enzyme pathways under study conditions.
+
+### Results
+- **Log2 fold change Bar Plot**
+- ![EnzymeBarPlot](Functional_Analysis/Picrust_Analysis_Enzymes/Enzymes_adj_ferritin_status_deficient as reference .png)
+- All signficant enzymes were upregulated in infants with high inflammation levels
+- Only Enzymes with a log2 fold change>4 shown
+
+### Discussion
+- The most upregulated enzyme Gamma-L-glutamyl-butirosin B gamma-glutamyl cyclotransferase is involved in the biosynthesis of butirosin B, an aminoglycoside antibiotic that combats a wide range of bacterial infections
+- The heightened activity of this cyclotransferase in bacteria can be indicative of a response toward countering inflammatory processes and infection
+- The upregulation of the ATPase enzyme might be indicative of an attempt to meet the high ATP demand characteristic of inflammatory states
 
 ### Conclusion
 This workflow provides a comprehensive approach to analyzing enzyme pathway activity in an anemia study using advanced bioinformatics tools like DESeq2 and PICRUSt2. It includes detailed steps from data preparation to in-depth analysis and visualization, aimed at uncovering significant biological insights related to adjusted ferritin status in anemic patients.
