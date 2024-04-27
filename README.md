@@ -34,11 +34,10 @@ All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_
 
 # Project Aims
 - Aim 1: Microbiome Data Processing: Use Qiime2 for initial microbiome data processing to set the stage for detailed analysis.
-- Aim 2: Diversity Analysis: Use R to carry out alpha/beta diversity analyses to examine the association between selected metabolic markers (Adjusted Body Iron Storage, Adjusted Ferritin Status, Adjusted Retinol Binding Protein Status, and C Reactive Protein Status) and microbial diversity within 12-month old anemic children
-- Aim 3: Infection Status Diversity Metrics: Investigate microbiome differences in anemic children by categorizing each sample as either infected or uninfected, informed by prior evidence suggesting minimal variation across infection stages.
-- Aim 4: Targeted Analysis: Focus on the relationship between metabolic markers and microbial abundance/diversity specifically in infected anemic children, expanding to differential abundance analysis afterwards.
-- Aim 5: Metabolic Pathway Analysis: Use PICRUSt2 for functional analysis to determine metabolic pathways in anemic children with infection that are influenced by microbiome composition
-- Aim 6: Development of Predictive Models: Use identified metabolic markers from anemic children, segmented by infection status, to create predictive models for microbial richness/abundance and potential inflammatory species presence.
+- Aim 2: Microbial Diversity and Inflammation Correlation: Employ R to perform alpha and beta diversity analyses, examining how adjusted ferritin levels, as a proxy for inflammation, correlate with microbial diversity in anemic infants, highlighting the potential interplay between systemic inflammation and microbiome composition.
+- Aim 3: Differential Abundance in Infection and Inflammation Contexts: Focus on the differential abundance of microbial taxa in anemic infants, distinguishing between those with high and low inflammation. Investigate how these differences may relate to infection status, using infection stages as sub-categories for a more nuanced analysis.
+- Aim 4: Metabolic and Functional Pathway Analysis: Use PICRUSt2 to analyze metabolic pathways in the microbiomes of anemic, infected infants, particularly those with high inflammation. Explore how these pathways may be influenced by the microbiome, potentially impacting anemic conditions through systemic responses.
+- Aim 5: Integrated Analysis of Microbial and Metabolic Data: Combine findings from microbial diversity and metabolic pathway analyses to identify potential connections between specific microbial taxa, inflammation levels, and metabolic functions.
 
 # Agenda
 ### April 10 2024 at 2:15 pm
