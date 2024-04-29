@@ -12,6 +12,11 @@ Iron is an essential micronutrient critical for human growth, cell function, and
 
 All scripts run for QIIME processing can be found [here](QIIME_files/QIIME_data_processing_script)
 
+All scripts run in R (excluding functional analyses) can be found [here](R_Scripts_files)
+
+Pathway and enzyme analysis files (done in R) can be found [here](Functional_Analysis)
+
+Links to files within each of these folders are provided in the lab notebook entries below.
 
 # Table of Contents
 
